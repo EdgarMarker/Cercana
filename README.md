@@ -9,13 +9,13 @@
 
 ### 1. Abrir terminal y clonar el repositorio
 ```bash
-git clone https://github.com/EdgarMarker/Amada.git
+git clone https://github.com/EdgarMarker/Cercana.git
 cd Amada
 ```
 ### 2. Configurar variables de entorno (Frontend)
 ```bash
 cd frontend
-git clone [SECRET_GIST_URL] .env_secrets && touch .env && cp .env_secrets/Amada.txt .env && rm -rf .env_secrets
+git clone [SECRET_GIST_URL] .env_secrets && touch .env && cp .env_secrets/Cercana.txt .env && rm -rf .env_secrets
 ```
 ### 3. Instalar dependencias
 #### Frontend

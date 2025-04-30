@@ -1,11 +1,6 @@
 // next.config.ts
 import type { NextConfig } from "next";
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
-const nextConfig: NextConfig = {
-  
-};
-
-initOpenNextCloudflareForDev(); 
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

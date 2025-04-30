@@ -2,7 +2,6 @@
 
 import { createClient } from "@sanity/client";
 import type { SanityClient } from "@sanity/client";
-import type { ExecutionContext } from "@cloudflare/workers-types";
 
 interface Env {
   SANITY_PROJECT_ID: string;
@@ -27,7 +26,7 @@ export default {
   async fetch(
     request: Request,
     env: Env, // <-- 'env' object correctly passed here
-    ctx: ExecutionContext
+    ctx: any
   ): Promise<Response> {
     if (request.method !== "POST") {
       return new Response("Method Not Allowed", { status: 405 });

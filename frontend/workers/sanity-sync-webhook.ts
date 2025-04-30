@@ -19,13 +19,13 @@ async function isValidSignature(
     return false;
   }
   console.warn("Webhook signature verification is not fully implemented!");
-  return true; // DANGER: REPLACE WITH YOUR ACTUAL SECURE IMPLEMENTATION IN PRODUCTION
+  return true
 }
 
 export default {
   async fetch(
     request: Request,
-    env: Env, // <-- 'env' object correctly passed here
+    env: Env,
     ctx: any
   ): Promise<Response> {
     if (request.method !== "POST") {
@@ -66,12 +66,6 @@ export default {
         fieldsToSync.statsNumber = updatedDocument.statsNumber;
       }
     }
-    // Add more else if blocks for other internationalized document types
-    // else if (updatedDocument._type === 'product') {
-    //     if (updatedDocument.price !== undefined) {
-    //         fieldsToSync.price = updatedDocument.price;
-    //     }
-    // }
 
     if (Object.keys(fieldsToSync).length === 0) {
       console.log(

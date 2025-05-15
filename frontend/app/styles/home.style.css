@@ -1,0 +1,109 @@
+.catalogue,
+.cercana,
+.testimonials {
+  padding: 5%;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  .hero__bgContainer {
+    position: absolute;
+  }
+  .hero__reserveDashboard {
+    display: flex;
+    gap: 5%;
+    li {
+      width: 5px;
+      aspect-ratio: 1/1;
+    }
+  }
+}
+
+.intro {
+  .intro__imgIconContainer {
+    width: 50px;
+    aspect-ratio: 1/1;
+    .img {
+      object-fit: contain !important;
+    }
+  }
+  .intro__imgLeftContainer {
+    border-radius: 0 24px 24px 0 !important;
+  }
+  .intro__imgRightContainer {
+    border-radius: 24px 0 0 24px !important;
+  }
+}
+
+.cercana {
+  .cercana__imgLContainer {
+    width: 75%;
+    aspect-ratio: 1;
+    height: auto;
+  }
+  .col__right {
+    position: relative;
+    .cercana__img--absolute {
+      position: absolute;
+      width: 40%;
+      top: 75%;
+      right: 0%;
+      .cercana__imgSmContainer {
+        aspect-ratio: 2.5/2;
+        height: auto;
+      }
+    }
+  }
+}
+
+.testimonials {
+  .column__1 {
+    h2 {
+      width: 50%;
+    }
+    .testy__card {
+      padding: 5%;
+      background-color: red;
+      .testy__cardHead {
+        ul {
+          display: flex;
+          padding: 0;
+          .testy__cardHeadStarsContainer {
+            width: 20px;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+      .testy__cardName {
+        width: fit-content;
+        margin-top: 8vh;
+        border-top: 5px solid black;
+      }
+    }
+
+    .splide__arrows {
+      position: absolute;
+      top: -25% !important;
+      right: 0;
+      width: 120px;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      .splide__arrow--prev,
+      .splide__arrow--next {
+        position: relative !important;
+        width: 50px;
+        height: 50px;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: translate(0, 0) !important;
+      }
+    }
+  }
+}

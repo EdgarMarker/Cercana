@@ -3,7 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {documentInternationalization} from '@sanity/document-internationalization'
-
+import {structure} from './structure'
 const supportedLanguages = [
   {id: 'es', title: 'Español'},
   {id: 'en', title: 'English'},
@@ -17,11 +17,13 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    structureTool(),
+    structureTool({
+      structure,
+    }),
     visionTool(),
     documentInternationalization({
       supportedLanguages: supportedLanguages,
-      schemaTypes: ['page'],
+      schemaTypes: ['home', 'accommodations', 'development', 'us', 'contact', 'rooms-detail'],
       languageField: 'language',
     }),
   ],

@@ -22,21 +22,21 @@ git clone [SECRET_GIST_URL] .env_secrets && touch .env && cp .env_secrets/Cercan
 ```bash
 npm install
 ```
-#### Backend
+#### Backend - Sanity
 ```bash
-cd ../backend
+cd ../backend/sanity
 npm install
 ```
 
 ## ▶️ Ejecución del proyecto
 
-### 1. Iniciar backend (desde /backend):
+### 1. Iniciar backend - Sanity (desde /backend):
 ```bash
 npm run dev
 ```
 ### 2. Iniciar frontend (desde /frontend):
 ```bash
-cd ../frontend
+cd ../../frontend
 npm run dev
 ```
 

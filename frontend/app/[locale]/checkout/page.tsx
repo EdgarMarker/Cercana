@@ -1,3 +1,4 @@
+/*
 "use client";
 import PaymentForm from "@/app/components/forms/PaymentForm";
 import { Elements } from "@stripe/react-stripe-js";
@@ -123,3 +124,4 @@ const page = () => {
 };
 
 export default page;
+*/

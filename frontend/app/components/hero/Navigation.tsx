@@ -5,7 +5,7 @@ import { DayPicker, DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import 'react-day-picker/dist/style.css';
-import '@/app/styles/test.css';
+import '@/app/styles/testNavigation.css';
 
 const Navigation = () => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/styles/globals.css";
 import "@/app/styles/_reset.css";
-import ScrollSmootherProvider from "./lib/gsap/ScrollSmootherProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ScrollSmootherProvider>{children}</ScrollSmootherProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

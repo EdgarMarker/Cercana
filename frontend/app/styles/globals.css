@@ -1,15 +1,13 @@
-
-
 html,
 body {
-  height: 100%;
+  overflow: auto;
+  height: auto;
 }
 
 body {
   font-family: var(--font-primary);
   background-color: var(--color-primary-light);
   color: var(--color-primary);
-  min-height: 100dvh;
 }
 
 /*  Barba transition  */
@@ -108,6 +106,7 @@ h1 {
   line-height: 1.2;
   margin-bottom: 20px;
   color: var(--color-white);
+  color: var(--color-secondary);
 }
 
 h2 {
@@ -116,6 +115,7 @@ h2 {
   font-weight: 400;
   line-height: 1.1;
   margin-bottom: 20px;
+  color: var(--color-secondary-dark);
 }
 
 h3 {
@@ -124,6 +124,7 @@ h3 {
   font-size: var(--size-md);
   line-height: 1.2;
   margin-bottom: 20px;
+  color: var(--color-secondary-dark);
 }
 
 h4 {
@@ -155,6 +156,7 @@ li {
   font-weight: 400;
   line-height: 1.6;
   margin-bottom: 20px;
+  color: var(--color-black);
 }
 
 a {
@@ -187,8 +189,11 @@ section {
 
 .column__1 {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: auto;
   z-index: 1;
 }
 .column__2 {
@@ -266,10 +271,11 @@ section {
   grid-auto-rows: auto;
 }
 
-/*------------------------
-Custom css
-------------------------*/
-/*Img*/
+/* *------------------------
+* * Custom css
+* *------------------------*/
+
+/* *Img*/
 .imgContainer {
   position: relative;
   width: 100%;
@@ -285,6 +291,46 @@ Custom css
   }
 }
 
+/* *Modal*/
+
+.formModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* *btn*/
+.btn {
+  width: fit-content;
+  display: inline-block;
+  gap: 15px;
+  cursor: pointer;
+}
+.btn__primary,
+.btn__secondary {
+  color: var(--color-white);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn__primary {
+  background-color: var(--color-primary);
+}
+.btn__secondary {
+  background-color: var(--color-secondary-dark);
+}
 /* Media Queries */
 @media screen and (max-width: 1024px) {
   .column__2 {

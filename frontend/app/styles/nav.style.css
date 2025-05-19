@@ -1,0 +1,131 @@
+.nav__desktopHeader,
+.nav__mobileHeader {
+  position: fixed !important;
+  width: 100%;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  padding: 0 5%;
+  padding-top: 0.5%;
+  nav {
+    position: relative;
+    height: 60px;
+    background-color: var(--color-primary);
+    .nav__desktopPanel,
+    .nav__mobilePanel {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      padding: 0 1.25%;
+      .desktopPanelInner__langButton,
+      .mobilePanelInner__langButton,
+      .mobilePanelInner__menuButton {
+        padding: 8px 16px;
+        border-radius: 16px;
+        background-color: red;
+        cursor: pointer;
+      }
+    }
+    .nav__desktopLangBox,
+    .nav__mobileLangBox {
+      position: absolute;
+      width: fit-content;
+      top: 85%;
+      right: 0%;
+      padding: 5px 10px;
+      border-radius: 0px 0px 10px 10px;
+      background-color: yellowgreen;
+      z-index: 9;
+      a {
+        margin: 5px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.nav__mobileHeader {
+  display: none;
+}
+
+/* Desktop Nav Styles */
+.nav__desktopHeader {
+  display: block;
+  nav {
+    .nav__desktopPanel {
+      justify-content: space-between;
+      li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        gap: 5%;
+        a {
+          margin: 0;
+          height: fit-content;
+          justify-content: center;
+          display: flex;
+          text-decoration: none;
+          color: white;
+          picture {
+            width: 80%;
+            height: 60px !important;
+            img {
+              object-fit: contain !important;
+            }
+          }
+        }
+      }
+      li:nth-child(2) {
+        justify-content: center;
+      }
+      li:nth-child(3) {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+/* Media Query para cambiar entre desktop y mobile */
+@media (max-width: 850px) {
+  .nav__desktopHeader {
+    display: none;
+  }
+
+  .nav__mobileHeader {
+    display: block;
+    .nav__mobilePanel {
+      justify-content: space-between;
+      .mobilePanelInner--left {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        picture {
+          width: 80%;
+          height: 60px !important;
+          img {
+            object-fit: contain !important;
+          }
+        }
+      }
+      .mobilePanelInner--right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5%;
+      }
+    }
+    .nav__mobileLangBox {
+      right: 12% !important;
+    }
+    .nav__mobileMenuBox {
+      position: absolute;
+      top: 85%;
+      width: 100%;
+      border-radius: 0px 0px 10px 10px;
+      padding: 10px;
+      background-color: white;
+    }
+  }
+}

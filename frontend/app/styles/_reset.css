@@ -1,8 +1,15 @@
 /* Variables */
 
 :root {
+  /* Color */
+  --color-primary: #251f5c;
+  --color-primary-light: #ebf7ff;
+
+  --color-secondary: #dbb386;
+  --color-secondary-light: #f4eee8;
+  --color-secondary-dark: #7d4322;
   /* Base color */
-  --color-white: #f5f5f3;
+  --color-white: #e0e9ee;
   --color-black: #1e282f;
   /* Messages color */
   --color-success: #3ec43e;

@@ -27,7 +27,7 @@ const PortableTextCustom = ({
             alt="Content image"
             width={800}
             height={600}
-            category={category}
+            category={category || "regular"}
           />
         );
       },

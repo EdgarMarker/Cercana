@@ -8,7 +8,6 @@ import GoBtn from "../components/ui/btn/GoBtn";
 import SliderTesty from "../components/slider/SliderTesty";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/hero/Navigation";
-import { animationManager, useGSAP } from "../lib/gsap/animation-manager";
 
 interface HomePageProps {
   params: Promise<{

@@ -29,7 +29,7 @@ const Footer = async ({ language }: Props) => {
 
   const urls = language === "es" ? urlsEs : urlsEn;
   return (
-    <footer className="footer">
+    <footer className="footer fadeInOut">
       <div className="column__1">
         <GoBtn hasScroll={true} goToSection="#Hero" text="Ir arriba" />
         <CustomImg
@@ -41,18 +41,17 @@ const Footer = async ({ language }: Props) => {
           height={100}
         />
       </div>
-      
+
       <div className="column__1">
         <div className="listado__x4">
-
           <div className="foot__item">
             <h3>{language === "es" ? "Mapa del sitio" : "Site Map"}</h3>
             <ul role="list">
-            {urls.map((url, idx) => (
-              <li key={idx}>
-                <a href={url.url}>{url.name}</a>
-              </li>
-            ))}
+              {urls.map((url, idx) => (
+                <li key={idx}>
+                  <a href={url.url}>{url.name}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -78,16 +77,24 @@ const Footer = async ({ language }: Props) => {
             <h3>{language === "es" ? "Contáctenos" : "Contact"}</h3>
             <ul role="list">
               <li>
-                <a href={`mailto:${data.contact.string_email}`}>{data.contact.string_email}</a>
+                <a href={`mailto:${data.contact.string_email}`}>
+                  {data.contact.string_email}
+                </a>
               </li>
               <li>
-                <a href={`telto:${data.contact.string_phone}`}>{data.contact.string_phone}</a>
+                <a href={`telto:${data.contact.string_phone}`}>
+                  {data.contact.string_phone}
+                </a>
               </li>
               <li>
-                <a href={`telto:${data.contact.string_lada}`}>{data.contact.string_lada}</a>
+                <a href={`telto:${data.contact.string_lada}`}>
+                  {data.contact.string_lada}
+                </a>
               </li>
               <li>
-                <a href={data.contact.string_addressLink}>{data.contact.string_address}</a>
+                <a href={data.contact.string_addressLink}>
+                  {data.contact.string_address}
+                </a>
               </li>
             </ul>
           </div>
@@ -96,22 +103,24 @@ const Footer = async ({ language }: Props) => {
             <h3>{language === "es" ? "Síguenos" : "Follow"}</h3>
             <ul role="list">
               <li>
-                <a href={data.social.string_fbLink} target="_blank">Facebook</a>
+                <a href={data.social.string_fbLink} target="_blank">
+                  Facebook
+                </a>
               </li>
               <li>
-                <a href={data.social.string_igLink} target="_blank">Instagram</a>
+                <a href={data.social.string_igLink} target="_blank">
+                  Instagram
+                </a>
               </li>
               <li>
-                <a href={data.social.string_ytLink} target="_blank">YouTube</a>
+                <a href={data.social.string_ytLink} target="_blank">
+                  YouTube
+                </a>
               </li>
             </ul>
           </div>
-
         </div>
       </div>
-
-
-
 
       <span>
         Cercana © Todos los derechos reservados.{" "}

@@ -41,67 +41,78 @@ const Footer = async ({ language }: Props) => {
           height={100}
         />
       </div>
-      <ul className="listado__x4" role="list">
-        <li>
-          <h3>{language === "es" ? "Mapa del sitio" : "Site Map"}</h3>
-          {urls.map((url, idx) => (
-            <GoBtn
-              key={idx}
-              hasScroll={false}
-              goToUrl={url.url}
-              text={url.name}
-            />
-          ))}
-        </li>
-        <li>
-          <h3>{language === "es" ? "Propiedades" : "Properties"}</h3>
-          <p>Casas</p>
-          <p>Departamentos</p>
-          <p>Playa</p>
-          <p>Desarrollos</p>
-        </li>
-        <li>
-          <h3>{language === "es" ? "Contáctenos" : "Contact"}</h3>
-          <GoBtn
-            hasScroll={false}
-            goToUrl={`mailto:${data.contact.string_email}`}
-            text={data.contact.string_email}
-          />
-          <GoBtn
-            hasScroll={false}
-            goToUrl={`telto:${data.contact.string_phone}`}
-            text={data.contact.string_phone}
-          />
-          <GoBtn
-            hasScroll={false}
-            goToUrl={`telto:${data.contact.string_lada}`}
-            text={data.contact.string_lada}
-          />
-          <GoBtn
-            hasScroll={false}
-            goToUrl={data.contact.string_addressLink}
-            text={data.contact.string_address}
-          />
-        </li>
-        <li>
-          <h3>{language === "es" ? "Síguenos" : "Follow"}</h3>
-          <GoBtn
-            hasScroll={false}
-            goToUrl={data.social.string_fbLink}
-            text="Facebook"
-          />
-          <GoBtn
-            hasScroll={false}
-            goToUrl={data.social.string_igLink}
-            text="Instagram"
-          />
-          <GoBtn
-            hasScroll={false}
-            goToUrl={data.social.string_ytLink}
-            text="YouTube"
-          />
-        </li>
-      </ul>
+      
+      <div className="column__1">
+        <div className="listado__x4">
+
+          <div className="foot__item">
+            <h3>{language === "es" ? "Mapa del sitio" : "Site Map"}</h3>
+            <ul role="list">
+            {urls.map((url, idx) => (
+              <li key={idx}>
+                <a href={url.url}>{url.name}</a>
+              </li>
+            ))}
+            </ul>
+          </div>
+
+          <div className="foot__item">
+            <h3>{language === "es" ? "Propiedades" : "Properties"}</h3>
+            <ul role="list">
+              <li>
+                <a>Casas</a>
+              </li>
+              <li>
+                <a>Departamentos</a>
+              </li>
+              <li>
+                <a>Playa</a>
+              </li>
+              <li>
+                <a>Desarrollos</a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="foot__item">
+            <h3>{language === "es" ? "Contáctenos" : "Contact"}</h3>
+            <ul role="list">
+              <li>
+                <a href={`mailto:${data.contact.string_email}`}>{data.contact.string_email}</a>
+              </li>
+              <li>
+                <a href={`telto:${data.contact.string_phone}`}>{data.contact.string_phone}</a>
+              </li>
+              <li>
+                <a href={`telto:${data.contact.string_lada}`}>{data.contact.string_lada}</a>
+              </li>
+              <li>
+                <a href={data.contact.string_addressLink}>{data.contact.string_address}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="foot__item">
+            <h3>{language === "es" ? "Síguenos" : "Follow"}</h3>
+            <ul role="list">
+              <li>
+                <a href={data.social.string_fbLink} target="_blank">Facebook</a>
+              </li>
+              <li>
+                <a href={data.social.string_igLink} target="_blank">Instagram</a>
+              </li>
+              <li>
+                <a href={data.social.string_ytLink} target="_blank">YouTube</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
       <span>
         Cercana © Todos los derechos reservados.{" "}
         <a href="/" className="footer__spanAviso">

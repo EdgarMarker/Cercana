@@ -9,7 +9,7 @@ const SliderTesty = ({ data }) => {
   const [optionScreen, setOptionScreen] = React.useState({
     perPage: 3,
     type: "loop",
-    gap: "2rem",
+    gap: "5%",
     perMove: 1,
     pagination: false,
   });

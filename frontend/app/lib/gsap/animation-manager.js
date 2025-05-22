@@ -113,4 +113,40 @@ export const animationManager = {
 
     ScrollTrigger.refresh();
   },
+
+  // *Hero Home
+  initHeroHome() {
+
+    const fadeDuration = 1;
+    const stayDuration = 7;
+    const tl = gsap.timeline({ repeat: -1 });
+
+    // Imagen 1
+    tl.to(".hero__bgContainer:nth-child(2)", {
+      autoAlpha: 1,
+      duration: fadeDuration,
+      onStart: () =>
+        gsap.fromTo(".hero__bgContainer:nth-child(2)", { scale: 1 }, { scale: 1.3, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
+    })
+    .to(".hero__bgContainer:nth-child(3)", {
+      autoAlpha: 1,
+      duration: fadeDuration,
+      onStart: () =>
+        gsap.fromTo(".hero__bgContainer:nth-child(3)", { scale: 1.3 }, { scale: 1, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
+    }, `+=${stayDuration}`)
+    .to(".hero__bgContainer:nth-child(2)", { autoAlpha: 0, duration: fadeDuration }, "<")
+    .to(".hero__bgContainer:nth-child(4)", {
+      autoAlpha: 1,
+      duration: fadeDuration,
+      onStart: () =>
+        gsap.fromTo(".hero__bgContainer:nth-child(4)", { scale: 1 }, { scale: 1.3, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
+    }, `+=${stayDuration}`)
+    .to(".hero__bgContainer:nth-child(3)", { autoAlpha: 0, duration: fadeDuration }, "<")
+
+    // No animamos img1 aquí; dejamos que el fondo visual sea la transición
+    .to(".hero__bgContainer:nth-child(4)", { autoAlpha: 0, duration: fadeDuration }, `+=${stayDuration} - 0.3`);
+    
+    ScrollTrigger.refresh();
+  },
+
 };

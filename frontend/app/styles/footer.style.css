@@ -1,13 +1,19 @@
 footer {
-  padding: 5%;
+  padding: 5% 5% 50px;
   background-color: var(--color-primary);
   color: var(--color-white);
   .column__1 {
     flex-direction: column;
-    margin-bottom: 5vh;
+    margin-bottom: 5%;
+    .btn{
+      flex-direction: column-reverse;
+      &::after{
+        transform: rotate(-135deg);
+      }
+    }
     .footer__logo {
-      width: 50px;
-      height: 50px;
+      width: auto;
+      height: 70px;
       .img {
         object-fit: contain;
       }
@@ -21,6 +27,7 @@ footer {
     p {
       width: 100% !important;
       color: var(--color-white);
+      font-size: var(--size-xs);
       text-decoration: none;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
@@ -33,8 +40,10 @@ footer {
     display: inline-block;
     white-space: normal;
     width: 100%;
+    font-size: 14px;
     a {
       font-size: inherit;
+      font-family: inherit;
       color: inherit;
       display: inline;
       margin: 0;

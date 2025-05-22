@@ -4,7 +4,6 @@ import "../../styles/nav.style.css";
 import React, { useEffect, useState } from "react";
 import CustomImg from "../ui/img/CustomImg";
 import { usePathname } from "next/navigation";
-import GoBtn from "../ui/btn/GoBtn";
 
 interface Props {
   srcNavIcon: string;
@@ -61,56 +60,53 @@ const Nav = ({ srcNavIcon, language }: Props) => {
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    
   };
   //* Desktop Nav
   const desktopNav = (
     <header className="nav__desktopHeader">
       <nav className="radius__10">
-        <ul className="nav__desktopPanel" role="list">
-          <li>
-            {urls.slice(0, 3).map((url, idx) => (
-              <GoBtn
-                hasScroll={false}
-                goToUrl={url.url}
-                text={url.name}
-                key={idx}
-              />
-            ))}
-          </li>
-          <li>
-            <a href="/">
-              <CustomImg
-                category="small"
-                src={srcNavIcon}
-                alt="Logo de la empresa"
-                width={100}
-                height={100}
-              />
-            </a>
-          </li>
-          <li>
-            {urls.slice(3).map((url, idx) => (
-              <a key={idx} href={url.url}>
+        <ul role="list">
+          {urls.slice(0, 3).map((url, idx) => (
+            <li key={idx}>
+              <a href={url.url}>{url.name}</a>
+            </li>
+          ))}
+        </ul>
+          
+        <a className="logo" href="/">
+          <CustomImg
+            category="small"
+            src={srcNavIcon}
+            alt="Logo de la empresa"
+            width={100}
+            height={100}
+          />
+        </a>
+          
+        <ul role="list">
+          {urls.slice(3).map((url, idx) => (
+            <li key={idx}>
+              <a href={url.url}>
                 {url.name}
               </a>
-            ))}
-            <button
-              className="desktopPanelInner__langButton"
-              onClick={() => handleLangToggle()}
-            >
+            </li>
+          ))}
+          <li>
+            <button className="desktopPanelInner__langButton" onClick={() => handleLangToggle()}>
               {language}
             </button>
+            {isLangOpen && (
+              <ul className="nav__desktopLangBox" role="list">
+                {availableLangs.map((lang, idx) => (
+                  <a className={`lang__${lang}`} href={`/${lang}`} key={idx}> {lang} </a>
+                ))}
+              </ul>
+            )}
           </li>
         </ul>
-        {isLangOpen && (
-          <ul className="nav__desktopLangBox" role="list">
-            {availableLangs.map((lang, idx) => (
-              <a href={`/${lang}`} key={idx}>
-                {lang}
-              </a>
-            ))}
-          </ul>
-        )}
+
+        
       </nav>
     </header>
   );
@@ -136,14 +132,24 @@ const Nav = ({ srcNavIcon, language }: Props) => {
               onClick={() => handleLangToggle()}
             >
               {language}
+              {/* Language dropdown */}
+        {isLangOpen && (
+          <ul className="nav__mobileLangBox" role="list">
+            {availableLangs.map((lang, idx) => (
+              <a className={`lang__${lang}`} href={`/${lang}`} key={idx}>
+                {lang}
+              </a>
+            ))}
+          </ul>
+        )}
             </button>
 
-            <button
+            <a
               className="mobilePanelInner__menuButton"
               onClick={() => handleMobileMenuToggle()}
-            >
-              Menu
-            </button>
+            > 
+              <span className={isMobileMenuOpen ? "open" : ""}></span>
+            </a>
           </div>
         </div>
 
@@ -158,16 +164,7 @@ const Nav = ({ srcNavIcon, language }: Props) => {
           </ul>
         )}
 
-        {/* Language dropdown */}
-        {isLangOpen && (
-          <ul className="nav__mobileLangBox" role="list">
-            {availableLangs.map((lang, idx) => (
-              <a href={`/${lang}`} key={idx}>
-                {lang}
-              </a>
-            ))}
-          </ul>
-        )}
+        
       </nav>
     </header>
   );

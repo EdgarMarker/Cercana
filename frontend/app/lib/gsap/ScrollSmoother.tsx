@@ -14,6 +14,7 @@ const ScrollSmootherProvider = ({ children }: Props) => {
     if (typeof window === "undefined") return;
     animationManager.initScrollSmoother();
     animationManager.initBatchAnimations();
+    animationManager.initHeroHome();
   });
 
   return (

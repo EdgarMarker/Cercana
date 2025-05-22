@@ -7,10 +7,13 @@
 
   --color-secondary: #dbb386;
   --color-secondary-light: #f4eee8;
-  --color-secondary-dark: #7d4322;
+  --color-secondary-dark: #8a653a;
+   --color-secondary-darker: #7d4322;
+
+  --color-accent: #e0e9ee;
   /* Base color */
-  --color-white: #e0e9ee;
-  --color-black: #1e282f;
+  --color-white: #f5f5f5;
+  --color-black: #1d1d26;
   /* Messages color */
   --color-success: #3ec43e;
   --color-error: #ff5151;
@@ -26,8 +29,7 @@
   --size-3xl: 4vw;
 
   /* Tipografías */
-  --font-primary: "KoHo";
-  --font-secondary: secondary;
+  --font-primary: primary;
 }
 
 /* Actualizar solo URL de las fuentes según convenga (convertir a formato woff) */
@@ -37,128 +39,33 @@
 @font-face {
   font-family: primary;
   font-style: normal;
-  font-weight: 400;
-  src: url(/fonts/playfair_display_regular.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: italic;
-  font-weight: 400;
-  src: url(/fonts/playfair_display_italic.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: normal;
-  font-weight: 500;
-  src: url(/fonts/playfair_display_medium.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: italic;
-  font-weight: 500;
-  src: url(/fonts/playfair_display_medium_italic.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: normal;
-  font-weight: 600;
-  src: url(/fonts/playfair_display_bold.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: italic;
-  font-weight: 600;
-  src: url(/fonts/playfair_display_bold_italic.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: normal;
-  font-weight: 700;
-  src: url(/fonts/playfair_display_extra_bold.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: italic;
-  font-weight: 700;
-  src: url(/fonts/playfair_display_extra_bold_italic.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: normal;
-  font-weight: 800;
-  src: url(/fonts/playfair_display_black.woff);
-}
-
-@font-face {
-  font-family: primary;
-  font-style: italic;
-  font-weight: 800;
-  src: url(/fonts/playfair_display_black_italic.woff);
-}
-
-@font-face {
-  font-family: secondary;
-  font-style: normal;
-  font-weight: 200;
-  src: url(/fonts/onest_thin.woff);
-}
-
-@font-face {
-  font-family: secondary;
-  font-style: normal;
-  font-weight: 250;
-  src: url(/fonts/onest_extra_light.woff);
-}
-
-@font-face {
-  font-family: secondary;
-  font-style: normal;
   font-weight: 300;
-  src: url(/fonts/onest_light.woff);
+  src: url(../assets/fonts/gazpacho_light.woff);
 }
 
 @font-face {
-  font-family: secondary;
+  font-family: primary;
   font-style: normal;
   font-weight: 400;
-  src: url(/fonts/onest_regular.woff);
+  src: url(../assets/fonts/gazpacho_regular.woff);
 }
 
 @font-face {
-  font-family: secondary;
+  font-family: primary;
   font-style: normal;
   font-weight: 500;
-  src: url(/fonts/onest_semi_bold.woff);
+  src: url(../assets/fonts/gazpacho_medium.woff);
 }
 
 @font-face {
-  font-family: secondary;
+  font-family: primary;
   font-style: normal;
   font-weight: 600;
-  src: url(/fonts/onest_bold.woff);
+  src: url(../assets/fonts/gazpacho_bold.woff);
 }
 
-@font-face {
-  font-family: secondary;
-  font-style: normal;
-  font-weight: 700;
-  src: url(/fonts/onest_extra_bold.woff);
-}
 
-@font-face {
-  font-family: secondary;
-  font-style: normal;
-  font-weight: 800;
-  src: url(/fonts/onest_black.ttf);
-}
+
 
 *,
 *::before,

@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/styles/globals.css";
 import "@/app/styles/_reset.css";
+import { Libre_Franklin } from "next/font/google";
+
+const libreFranklin = Libre_Franklin({
+  variable: "--font-secondary",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={libreFranklin.variable}>
       <body>{children}</body>
     </html>
   );

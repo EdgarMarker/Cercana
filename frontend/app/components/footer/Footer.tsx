@@ -31,7 +31,9 @@ const Footer = async ({ language }: Props) => {
   return (
     <footer className="footer fadeInOut">
       <div className="column__1">
-        <GoBtn hasScroll={true} goToSection="#Hero" text="Ir arriba" />
+        <GoBtn hasScroll={true} goToSection="#Hero">
+          Ir arriba
+        </GoBtn>
         <CustomImg
           src={logo}
           alt="logo pie de pagina"

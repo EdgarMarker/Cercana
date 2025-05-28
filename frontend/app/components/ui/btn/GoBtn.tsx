@@ -12,31 +12,31 @@ interface Props {
   hasScroll: boolean;
   goToSection?: SectionType;
   goToUrl?: string;
-  text: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const LinkBtn = ({
   url,
-  text,
+  children,
   className,
 }: {
   url: string;
-  text: string;
+  children?: React.ReactNode;
   className: string;
 }) => {
   return (
     <Link href={url} className={`btn ${className}`}>
-      {text}
+      {children}
     </Link>
   );
 };
 const ScrollBtn = ({
-  text,
+  children,
   target,
   className,
 }: {
-  text: string;
+  children: React.ReactNode | string;
   target: string;
   className: string;
 }) => {
@@ -47,7 +47,7 @@ const ScrollBtn = ({
   });
   return (
     <button className={`btn ${className}`} onClick={() => handleScroll()}>
-      {text}
+      {children}
     </button>
   );
 };
@@ -56,13 +56,17 @@ const GoBtn = ({
   hasScroll = true,
   goToUrl = "/",
   goToSection = "#Hero",
-  text = "Explorar",
+  children,
   className = "btn",
 }: Props) => {
   return hasScroll ? (
-    <ScrollBtn target={goToSection} text={text} className={className} />
+    <ScrollBtn target={goToSection} className={className}>
+      {children}
+    </ScrollBtn>
   ) : (
-    <LinkBtn url={goToUrl} text={text} className={className} />
+    <LinkBtn url={goToUrl} className={className}>
+      {children}
+    </LinkBtn>
   );
 };
 

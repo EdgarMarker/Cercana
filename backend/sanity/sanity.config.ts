@@ -23,7 +23,7 @@ export default defineConfig({
     visionTool(),
     documentInternationalization({
       supportedLanguages: supportedLanguages,
-      schemaTypes: ['home', 'accommodations', 'development', 'us', 'contact', 'rooms-detail'],
+      schemaTypes: ['home', 'accommodations', 'development', 'us', 'contact', 'room-detail'],
       languageField: 'language',
     }),
   ],

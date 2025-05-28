@@ -6,7 +6,7 @@ export interface Home {
     string_h1: string;
     string_h2: string;
     string_btn: string;
-    img_bg: Image;
+    arr_imgBg: Image[];
   };
   intro: {
     block_info: (Block | Image)[];

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Nav from "../components/nav/Nav";
 import { getCompanyData } from "../data/company.data";
 import DynamicScrollSmootherProvider from "../lib/gsap/DynamicScrollSmootherProvider";
-import FormModal from "../components/modal/FormModal";
+import FormModal from "../components/ui/modal/FormModal";
 
 interface Props {
   children: ReactNode;

@@ -80,9 +80,13 @@ export default {
           type: 'string',
         },
         {
-          name: 'img_bg',
+          name: 'arr_imgBg',
           title: 'Imagen de fondo',
-          type: 'image',
+          type: 'array',
+          of: [{type: 'image'}],
+          options: {
+            layout: 'grid',
+          },
         },
       ],
     },

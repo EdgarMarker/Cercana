@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import PopBtn from "../ui/btn/PopBtn";
+import PopBtn from "../btn/PopBtn";
 
 const FormModal = () => {
   return (

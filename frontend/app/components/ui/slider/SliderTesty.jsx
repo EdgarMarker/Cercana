@@ -2,8 +2,8 @@
 import "@splidejs/react-splide/css";
 import React, { use, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import CustomImg from "../ui/img/CustomImg";
-import PortableTextCustom from "../ui/portableText/PortableTextCustom";
+import CustomImg from "../img/CustomImg";
+import PortableTextCustom from "../portableText/PortableTextCustom";
 
 const SliderTesty = ({ data }) => {
   const [optionScreen, setOptionScreen] = React.useState({

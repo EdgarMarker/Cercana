@@ -5,9 +5,9 @@ import PopBtn from "../components/ui/btn/PopBtn";
 import PortableTextCustom from "../components/ui/portableText/PortableTextCustom";
 import CustomImg from "../components/ui/img/CustomImg";
 import GoBtn from "../components/ui/btn/GoBtn";
-import SliderTesty from "../components/slider/SliderTesty";
+import SliderTesty from "../components/ui/slider/SliderTesty";
 import Footer from "../components/footer/Footer";
-import Navigation from "../components/hero/Navigation";
+import Dashboard from "../components/hero/Dashboard";
 
 interface HomePageProps {
   params: Promise<{
@@ -30,40 +30,31 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <>
       <section className="hero" id="Hero">
-
         <div className="hero__bgStatic">
-          {/* Este sería un slice con la imagen 1 del array, que se usa de fondo para facilitar el loop */}
-          <CustomImg
-            containerClassName="hero__bgContainer"
-            src={data.hero.img_bg.media.url}
-            alt="Hero background"
-            category="xl"
-            fill={true}
-          />
+          {data.hero.arr_imgBg.slice(0, 1).map((img, index) => (
+            <CustomImg
+              key={`hero-bg-static-${index}`}
+              containerClassName="hero__bgContainer"
+              src={img.media.url}
+              alt="Hero background static"
+              category="xl"
+              fill={true}
+            />
+          ))}
         </div>
-        
-        {/*   Array de las 3 imágenes: */}
-        <CustomImg
-          containerClassName="hero__bgContainer"
-          src={data.hero.img_bg.media.url}
-          alt="Hero background"
-          category="xl"
-          fill={true}
-        />
-        <CustomImg
-          containerClassName="hero__bgContainer"
-          src={data.hero.img_bg.media.url}
-          alt="Hero background"
-          category="xl"
-          fill={true}
-        />
-        <CustomImg
-          containerClassName="hero__bgContainer"
-          src={data.hero.img_bg.media.url}
-          alt="Hero background"
-          category="xl"
-          fill={true}
-        />
+        {data.hero.arr_imgBg &&
+          data.hero.arr_imgBg
+            .slice(1)
+            .map((img, index) => (
+              <CustomImg
+                key={`hero-bg-${index + 1}`}
+                containerClassName="hero__bgContainer"
+                src={img.media.url}
+                alt={`Hero background ${index + 1}`}
+                category="xl"
+                fill={true}
+              />
+            ))}
 
         <div className="column__2 hero__info">
           <div className="col__left">
@@ -82,13 +73,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="grad__left"></div>
         <div className="grad__down"></div>
         <div className="column__1">
-          <ul className="hero__reserveDashboard">
-            <Navigation />
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <Dashboard locale={locale} />
         </div>
       </section>
       <section className="intro fadeInOut" id="Intro">
@@ -151,9 +136,10 @@ export default async function HomePage({ params }: HomePageProps) {
           <GoBtn
             hasScroll={false}
             goToUrl="/accommodation"
-            text={data.catalogue.string_btn}
             className="btn__primary"
-          />
+          >
+            {data.catalogue.string_btn}
+          </GoBtn>
         </div>
       </section>
       <section className="cercana fadeInOut" id="Explore">
@@ -163,9 +149,9 @@ export default async function HomePage({ params }: HomePageProps) {
             <GoBtn
               hasScroll={false}
               goToUrl=""
-              text={data.explore.string_btn}
-              className="btn__primary"
-            />
+            >
+              {data.explore.string_btn}
+            </GoBtn>
           </div>
           <div className="col__right">
             <CustomImg

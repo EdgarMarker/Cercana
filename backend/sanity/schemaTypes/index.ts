@@ -5,7 +5,9 @@ import contact from './contact'
 import development from './development'
 import home from './home'
 import rooms from './rooms'
-import roomsDetail from './rooms-detail'
+import roomCategory from './rooms/room-category'
+import roomDetail from './rooms/room-detail'
+import roomLocation from './rooms/room-location'
 import testimonials from './testimonials'
 import us from './us'
 
@@ -16,7 +18,9 @@ export const schemaTypes = [
   us,
   contact,
   rooms,
-  roomsDetail,
+  roomDetail,
+  roomCategory,
+  roomLocation,
   amenities,
   testimonials,
   company,

@@ -12,7 +12,7 @@ const MODEL_PAGE = `
     string_h1,
     string_h2,
     string_btn,
-    img_bg{
+    arr_imgBg[]{
       "media": asset->{url}
     }
   },

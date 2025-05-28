@@ -280,6 +280,17 @@ section {
 * * Custom css
 * *------------------------*/
 
+/**Card */
+.card.card__room {
+  .btn {
+    display: block;
+    font-style: none;
+    text-decoration: none;
+  }
+  .btn::after {
+    display: none;
+  }
+}
 /* *Img*/
 .imgContainer {
   position: relative;
@@ -327,7 +338,7 @@ section {
   font-family: var(--font-primary);
   padding: 16px 30px;
   border-radius: 10px;
-  &::after{
+  &::after {
     content: "";
     position: relative;
     width: 0.7em;
@@ -340,7 +351,7 @@ section {
 .btn__primary,
 .btn__secondary {
   color: var(--color-white);
-  
+
   text-decoration: none;
   transition: all 0.3s ease;
 }

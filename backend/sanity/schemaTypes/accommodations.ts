@@ -8,6 +8,16 @@ export default {
       readOnly: true,
       hidden: true,
     },
-    
+    {
+      name: 'string_h1',
+      title: 'Título principal',
+      type: 'string',
+    },
+    {
+      name: 'block_info',
+      title: 'Información de pagina',
+      type: 'array',
+      of: [{type: 'block'}],
+    },
   ],
 }

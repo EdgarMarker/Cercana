@@ -20,3 +20,8 @@ export interface SEO {
   dsc: string;
   keywords: string;
 }
+
+export interface SLUG {
+  _type: "slug";
+  current: string;
+}

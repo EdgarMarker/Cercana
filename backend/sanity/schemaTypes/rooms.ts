@@ -11,7 +11,7 @@ export default {
       name: 'ref_rooms_detail',
       title: 'Version detalle de habitaciones',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'rooms-detail'}]}],
+      of: [{type: 'reference', to: [{type: 'room-detail'}]}],
     },
   ],
 }

@@ -35,7 +35,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <CustomImg
               key={`hero-bg-static-${index}`}
               containerClassName="hero__bgContainer"
-              src={img.media.url}
+              src={img.media?.url || ""}
               alt="Hero background static"
               category="xl"
               fill={true}
@@ -49,7 +49,7 @@ export default async function HomePage({ params }: HomePageProps) {
               <CustomImg
                 key={`hero-bg-${index + 1}`}
                 containerClassName="hero__bgContainer"
-                src={img.media.url}
+                src={img.media?.url || ""}
                 alt={`Hero background ${index + 1}`}
                 category="xl"
                 fill={true}
@@ -89,7 +89,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="col__left">
             <CustomImg
               containerClassName="intro__imgLeftContainer"
-              src={data.intro.img.media.url}
+              src={data.intro.img.media?.url || ""}
               alt="intro imagen referencia"
               width={960}
               height={720}
@@ -156,7 +156,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="col__right">
             <CustomImg
               containerClassName="cercana__imgLContainer"
-              src={data.explore.img_1.media.url}
+              src={data.explore.img_1.media?.url || ""}
               alt="cercana imagen referencia 1"
               width={600}
               height={600}
@@ -165,7 +165,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="cercana__img--absolute">
               <CustomImg
                 containerClassName="cercana__imgSmContainer"
-                src={data.explore.img_1.media.url}
+                src={data.explore.img_1.media?.url || ""}
                 alt="cercana imagen referencia 1"
                 width={300}
                 height={300}

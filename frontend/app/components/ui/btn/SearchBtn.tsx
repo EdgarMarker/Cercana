@@ -3,6 +3,8 @@ import { searchRooms } from "@/app/data/room.data";
 import React, { useState } from "react";
 import { useSearchRoomStore } from "@/app/stores/searchRoom.stores";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { getMessages } from "@/messages/getMessages";
 
 interface Props {
   selectedCategory: string;
@@ -14,40 +16,44 @@ const SearchBtn = ({
   selectedLocation,
   locale = "es",
 }: Props) => {
-  const [isSearching, setIsSearching] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const { setSearchResults } = useSearchRoomStore();
-  const router = useRouter();
+  /* *Language */
   const currentLocale = locale === "es" ? "es/alojamiento" : "en/accommodation";
+  const L = getMessages(locale);
+  /* *Hooks */
+  const [isSearching, setIsSearching] = useState(false);
+  const { setSearchResults } = useSearchRoomStore();
+
+  const router = useRouter();
+
   const handleSearch = async () => {
     if (!selectedCategory || !selectedLocation) {
-      setError("Por favor, selecciona una categoría o ubicación.");
+      toast.warning(L.dashboard.errorMessage);
       return;
     }
 
     setIsSearching(true);
-    setError(null);
 
     try {
       const data = await searchRooms(locale, {
         category: selectedCategory,
         location: selectedLocation,
       });
+
       if (data && data.length > 0) {
-        setIsSearching(false);
         setSearchResults(data);
         router.push(`/${currentLocale}`);
       }
     } catch (err: any) {
-      setError(err.message);
+      setSearchResults([]);
+      router.push(`/${currentLocale}`);
     } finally {
       setIsSearching(false);
     }
   };
+
   return (
     <button onClick={handleSearch} className="btn btn__search">
-      {isSearching ? "Buscando..." : "Buscar Alojamiento"}
-      {error && <div className="error">{error}</div>}
+      {isSearching ? L.dashboard.searching : L.dashboard.searchAccommodation}
     </button>
   );
 };

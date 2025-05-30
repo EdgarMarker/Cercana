@@ -4,14 +4,14 @@
   /* Color */
   --color-primary: #251f5c;
   --color-primary-light: #ebf7ff;
-
   --color-secondary: #dbb386;
   --color-secondary-light: #f4eee8;
   --color-secondary-dark: #8a653a;
-   --color-secondary-darker: #7d4322;
+  --color-secondary-darker: #7d4322;
 
   --color-accent: #e0e9ee;
   /* Base color */
+  --color-grey: #e3e3e5;
   --color-white: #f5f5f5;
   --color-black: #1d1d26;
   /* Messages color */
@@ -63,9 +63,6 @@
   font-weight: 600;
   src: url(../assets/fonts/gazpacho_bold.woff);
 }
-
-
-
 
 *,
 *::before,

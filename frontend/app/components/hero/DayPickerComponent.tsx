@@ -5,8 +5,12 @@ import { DayPicker, DateRange } from "react-day-picker";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import "react-day-picker/dist/style.css";
+import { get } from "http";
+import { getMessages } from "@/messages/getMessages";
 
-const DayPickerComponent = () => {
+const DayPickerComponent = ({ locale }: { locale: string }) => {
+  /* *Language */
+  const L = getMessages(locale);
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const dayPickerRef = useRef<HTMLDivElement>(null);
@@ -33,8 +37,9 @@ const DayPickerComponent = () => {
   const getButtonText = () => {
     const { from, to } = dateRange || {};
 
-    if (!from) return "Seleccionar fechas";
-    if (!to) return `Entrada: ${format(from, "dd/MM/yyyy")} - Seleccione salida`;
+    if (!from) return L.dashboard.selectDates;
+    if (!to)
+      return `Entrada: ${format(from, "dd/MM/yyyy")} - Seleccione salida`;
     return `${format(from, "dd/MM")} - ${format(to, "dd/MM/yyyy")}`;
   };
 

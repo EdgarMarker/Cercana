@@ -6,7 +6,6 @@ import PortableTextCustom from "../components/ui/portableText/PortableTextCustom
 import CustomImg from "../components/ui/img/CustomImg";
 import GoBtn from "../components/ui/btn/GoBtn";
 import SliderTesty from "../components/ui/slider/SliderTesty";
-import Footer from "../components/footer/Footer";
 import Dashboard from "../components/hero/Dashboard";
 
 interface HomePageProps {
@@ -149,6 +148,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <GoBtn
               hasScroll={false}
               goToUrl=""
+              className="btn__primary"
             >
               {data.explore.string_btn}
             </GoBtn>
@@ -181,7 +181,6 @@ export default async function HomePage({ params }: HomePageProps) {
           <SliderTesty data={data.testy} />
         </div>
       </section>
-      <Footer language={locale} />
     </>
   );
 }

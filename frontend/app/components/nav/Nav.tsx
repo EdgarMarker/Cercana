@@ -4,6 +4,7 @@ import "../../styles/nav.style.css";
 import React, { useEffect, useState } from "react";
 import CustomImg from "../ui/img/CustomImg";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 interface Props {
   srcNavIcon: string;
@@ -60,8 +61,44 @@ const Nav = ({ srcNavIcon, language }: Props) => {
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    
   };
+
+  const getLangUrl = (newLang: string) => {
+    // Mapeo de rutas
+    const routeMap = {
+      alojamiento: "accommodation",
+      desarrollo: "develop",
+      nosotros: "about",
+      contacto: "contact",
+      accommodation: "alojamiento",
+      develop: "desarrollo",
+      about: "nosotros",
+      contact: "contacto",
+    };
+
+    const segments = pathname.split("/").filter(Boolean);
+
+    if (segments.length === 0) return `/${newLang}`; // Raíz
+
+    const currentLang = segments[0];
+    const currentRoute = segments[1];
+
+    // Si hay idioma en la URL
+    if (currentLang === "es" || currentLang === "en") {
+      const translatedRoute =
+        currentRoute && routeMap[currentRoute as keyof typeof routeMap]
+          ? routeMap[currentRoute as keyof typeof routeMap]
+          : currentRoute;
+
+      return translatedRoute ? `/${newLang}/${translatedRoute}` : `/${newLang}`;
+    }
+
+    // Si no hay idioma, traducir la ruta directamente
+    const translatedRoute =
+      routeMap[segments[0] as keyof typeof routeMap] || segments[0];
+    return `/${newLang}/${translatedRoute}`;
+  };
+
   //* Desktop Nav
   const desktopNav = (
     <header className="nav__desktopHeader">
@@ -73,7 +110,7 @@ const Nav = ({ srcNavIcon, language }: Props) => {
             </li>
           ))}
         </ul>
-          
+
         <a className="logo" href="/">
           <CustomImg
             category="small"
@@ -83,30 +120,36 @@ const Nav = ({ srcNavIcon, language }: Props) => {
             height={100}
           />
         </a>
-          
+
         <ul role="list">
           {urls.slice(3).map((url, idx) => (
             <li key={idx}>
-              <a href={url.url}>
-                {url.name}
-              </a>
+              <a href={url.url}>{url.name}</a>
             </li>
           ))}
           <li>
-            <button className="desktopPanelInner__langButton" onClick={() => handleLangToggle()}>
+            <button
+              className="desktopPanelInner__langButton"
+              onClick={() => handleLangToggle()}
+            >
               {language}
             </button>
             {isLangOpen && (
               <ul className="nav__desktopLangBox" role="list">
                 {availableLangs.map((lang, idx) => (
-                  <a className={`lang__${lang}`} href={`/${lang}`} key={idx}> {lang} </a>
+                  <a
+                    className={`lang__${lang}`}
+                    href={getLangUrl(lang)}
+                    key={idx}
+                  >
+                    {" "}
+                    {lang}{" "}
+                  </a>
                 ))}
               </ul>
             )}
           </li>
         </ul>
-
-        
       </nav>
     </header>
   );
@@ -133,21 +176,25 @@ const Nav = ({ srcNavIcon, language }: Props) => {
             >
               {language}
               {/* Language dropdown */}
-        {isLangOpen && (
-          <ul className="nav__mobileLangBox" role="list">
-            {availableLangs.map((lang, idx) => (
-              <a className={`lang__${lang}`} href={`/${lang}`} key={idx}>
-                {lang}
-              </a>
-            ))}
-          </ul>
-        )}
+              {isLangOpen && (
+                <ul className="nav__mobileLangBox" role="list">
+                  {availableLangs.map((lang, idx) => (
+                    <a
+                      className={`lang__${lang}`}
+                      href={getLangUrl(lang)}
+                      key={idx}
+                    >
+                      {lang}
+                    </a>
+                  ))}
+                </ul>
+              )}
             </button>
 
             <a
               className="mobilePanelInner__menuButton"
               onClick={() => handleMobileMenuToggle()}
-            > 
+            >
               <span className={isMobileMenuOpen ? "open" : ""}></span>
             </a>
           </div>
@@ -163,8 +210,6 @@ const Nav = ({ srcNavIcon, language }: Props) => {
             ))}
           </ul>
         )}
-
-        
       </nav>
     </header>
   );

@@ -26,6 +26,7 @@
     "react-day-picker": "^9.7.0",
     "react-dom": "^19.0.0",
     "sonner": "^2.0.3",
+    "yet-another-react-lightbox": "^3.23.2",
     "zustand": "^5.0.5"
   },
   "devDependencies": {

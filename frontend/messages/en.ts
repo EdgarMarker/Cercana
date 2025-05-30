@@ -20,5 +20,11 @@ export const messages = {
       beds: "Beds",
       baths: "Baths",
     },
+    page: {
+      distance: {
+        distanceWalking: "Walking Distances",
+        distanceDriving: "Driving Distances",
+      },
+    },
   },
 };

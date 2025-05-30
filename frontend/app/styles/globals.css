@@ -292,6 +292,84 @@ section {
     display: none;
   }
 }
+.card.card__roomDetail {
+  aspect-ratio: 2 / 1;
+  border-radius: 24px;
+  h3 {
+    margin-top: 1em;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+}
+.card.card__testy {
+  position: relative;
+  padding: 5%;
+  background-color: var(--color-primary-light);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .testy__cardHead {
+    ul {
+      display: flex;
+      padding: 0;
+      gap: 5px;
+      margin-bottom: 20px;
+      .testy__cardHeadStarsContainer {
+        width: 1em;
+        aspect-ratio: 1/1;
+      }
+    }
+    p {
+      font-size: var(--size-sm);
+    }
+  }
+  .testy__cardName {
+    position: relative;
+    width: auto;
+    margin-top: 5%;
+    padding-top: 5px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      width: 50%;
+      height: 5px;
+      background-color: var(--color-secondary-dark);
+    }
+  }
+}
+/**Tabs*/
+.tab__distanceRoom {
+  align-items: flex-start;
+  .dashboard {
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 50%;
+    button {
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #fff;
+      cursor: default;
+      transition: background-color 0.5s ease;
+    }
+    button.select {
+      background-color: var(--color-grey);
+      cursor: pointer;
+      transition: background-color 0.5s ease;
+    }
+  }
+  .content {
+    width: 100%;
+    padding: 5%;
+    border-radius: 0 15px 15px 15px;
+    background-color: #fff;
+  }
+}
+
 /* *Img*/
 .imgContainer {
   position: relative;
@@ -311,7 +389,8 @@ section {
 /* *Modal*/
 
 .formModal,
-.accommodationTextModal {
+.accommodationTextModal,
+.accommodationAmenityModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -326,6 +405,15 @@ section {
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
+}
+
+.accommodationAmenityModal {
+  ul {
+    columns: 2;
+    li {
+      display: flex;
+    }
+  }
 }
 
 /* *btn*/

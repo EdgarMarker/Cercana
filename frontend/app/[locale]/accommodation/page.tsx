@@ -31,7 +31,7 @@ const page = ({ params }: Props) => {
     };
     fetchPageData();
   }, [locale]);
-  console.log(pageData, locale);
+  
   useEffect(() => {
     const giveRooms = async () => {
       if (!searchResults || searchResults.length === 0) {
@@ -43,6 +43,8 @@ const page = ({ params }: Props) => {
     };
     giveRooms();
   }, [searchResults]);
+
+  console.log(roomData)
 
   return (
     <>

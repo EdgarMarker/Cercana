@@ -6,6 +6,7 @@ import FormModal from "../components/ui/modal/FormModal";
 import { Toaster } from "sonner";
 import Footer from "../components/footer/Footer";
 import AccommodationTextModal from "../components/ui/modal/AccommodationTextModal";
+import AccommodationAmenityModal from "../components/ui/modal/AccommodationAmenityModal";
 
 interface Props {
   children: ReactNode;
@@ -27,6 +28,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       {/* Modals */}
       <FormModal />
       <AccommodationTextModal />
+      <AccommodationAmenityModal />
       <Toaster position="bottom-right" richColors closeButton={true} />
     </div>
   );

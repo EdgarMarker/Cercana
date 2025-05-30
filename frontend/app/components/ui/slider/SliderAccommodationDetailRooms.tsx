@@ -1,0 +1,75 @@
+// @ts-nocheck
+"use client";
+import { Image } from "@/app/types/globals.types";
+import React, { useState } from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { Room } from "@/app/types/room.types";
+import CustomImg from "../img/CustomImg";
+
+interface Props {
+  data: Room;
+}
+const SliderAccommodationDetailRooms = ({ data }: Props) => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const lightboxImages = data.page.rooms.arrObject_room.map((image) => ({
+    src: image.img_room.media.url,
+    alt: `Image ${data.page.rooms.arrObject_room.indexOf(image) + 1}`,
+  }));
+  return (
+    <>
+      {/* Slider Principal */}
+      <Splide
+        options={{
+          type: "loop",
+          perPage: 2,
+          perMove: 1,
+          gap: "1rem",
+          arrows: true,
+          pagination: true,
+        }}
+      >
+        {data.page.rooms.arrObject_room.map((image, index) => (
+          <SplideSlide key={index}>
+            <div className="card card__roomDetail">
+              <CustomImg
+                src={image.img_room.media.url}
+                alt={`Slide ${index + 1}`}
+                width={300}
+                height={200}
+                category="regular"
+                onClick={() => openLightbox(index)}
+                style={{ cursor: "pointer" }}
+              />
+              <h3>{image.string_name}</h3>
+              <p>{image.string_dsc}</p>
+            </div>
+          </SplideSlide>
+        ))}
+      </Splide>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={closeLightbox}
+        index={currentIndex}
+        slides={lightboxImages}
+        controller={{ closeOnBackdropClick: true }}
+      />
+    </>
+  );
+};
+
+export default SliderAccommodationDetailRooms;

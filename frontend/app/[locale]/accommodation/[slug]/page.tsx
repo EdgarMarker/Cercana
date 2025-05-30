@@ -1,10 +1,14 @@
-import SliderAccommodationDetail from "@/app/components/ui/slider/SliderAccommodationDetail";
+import SliderAccommodationDetail from "@/app/components/ui/slider/SliderAccommodationDetailHero";
 import "../../../styles/roomDetailPage.styles.css";
 import { getRoomDataBySlug } from "@/app/data/room.data";
 import { getMessages } from "@/messages/getMessages";
 import React from "react";
-import PortableTextCustom from "@/app/components/ui/portableText/PortableTextCustom";
 import PopBtn from "@/app/components/ui/btn/PopBtn";
+import CustomImg from "@/app/components/ui/img/CustomImg";
+import SliderAccommodationDetailRooms from "@/app/components/ui/slider/SliderAccommodationDetailRooms";
+import AccommodationDetailDistanceTab from "@/app/components/ui/tabs/AccommodationDetailDistanceTab";
+import GoBtn from "@/app/components/ui/btn/GoBtn";
+import TestyCard from "@/app/components/ui/cards/TestyCard";
 
 interface Props {
   params: Promise<{ slug: string; locale: string }>;
@@ -65,12 +69,71 @@ const page = async ({ params }: Props) => {
                 showModal={true}
                 whichModal="accommodationTextModal"
                 text={data.page.intro.string_btn}
-                modalTextData={fullText}
+                modalDataText={fullText}
               />
             </article>
-            <article></article>
-            <article></article>
-            <article></article>
+            <article className="content__amenity">
+              <div className="column__1">
+                <h3>{data.page.amenities.string_h3}</h3>
+                <ul className="amenity__list" role="list">
+                  {data.page.amenities.arrRef_amenity
+                    .slice(0, 12)
+                    .map((amenity, idx) => (
+                      <li key={idx}>
+                        <CustomImg
+                          containerClassName="amenity__icon"
+                          src={amenity.img_icon.media.url}
+                          alt="amenity icon"
+                          category="small"
+                          width={50}
+                          height={50}
+                        />
+                        <p>{amenity.title}</p>
+                      </li>
+                    ))}
+                </ul>
+                <PopBtn
+                  showModal={true}
+                  whichModal="accommodationAmenityModal"
+                  text={data.page.amenities.string_btn}
+                  modalDataArray={data.page.amenities.arrRef_amenity}
+                />
+              </div>
+            </article>
+            <article className="content__rooms">
+              <h3>{data.page.rooms.string_h3}</h3>
+              <SliderAccommodationDetailRooms data={data} />
+            </article>
+            <article className="content__distance">
+              <h3>{data.page.distance.string_h3}</h3>
+              <AccommodationDetailDistanceTab
+                data={data}
+                LWalking={
+                  L.accommodationDetailPage.page.distance.distanceWalking
+                }
+                LDriving={
+                  L.accommodationDetailPage.page.distance.distanceDriving
+                }
+              />
+              {/*Google Maps*/}
+              <GoBtn
+                hasScroll={false}
+                goToUrl={data.general.string_urlLocation}
+                target="_blank"
+              >
+                {data.page.distance.string_btn}
+              </GoBtn>
+            </article>
+            <article className="content__testy">
+              <h2>{data.page.testy.string_h2}</h2>
+              <ul role="list" className="listado__x2">
+                {data.page.testy.arrRef_testimonial.map((item, idx) => (
+                  <li key={idx}>
+                    <TestyCard data={item} />
+                  </li>
+                ))}
+              </ul>
+            </article>
           </div>
           <div className="col__right"></div>
         </div>

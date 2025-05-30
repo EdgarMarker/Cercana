@@ -13,9 +13,17 @@
   padding: 5%;
   .column__2 {
     .col__left {
-      width: 100%;
-      .content__intro {
+      width: 60%;
+      .content__intro,
+      .content__amenity,
+      .content__rooms,
+      .content__distance {
+        padding: 10% 0;
         width: 100%;
+        border-bottom: 1px solid #1d1d25;
+      }
+      .content__intro {
+        padding-top: 0;
         .intro__list {
           display: flex;
           background-color: var(--color-grey);
@@ -24,13 +32,42 @@
           li {
             width: 100%;
             text-align: center;
-            padding: 5%;
+            padding: 2%;
             border-left: 1px solid #fff;
             margin: 0;
             display: flex;
             flex-direction: column;
           }
         }
+      }
+      .content__amenity {
+        .column__1 {
+          flex-direction: column;
+          align-items: flex-start;
+          .amenity__list {
+            width: 100%;
+            columns: 2;
+            li {
+              display: flex;
+              gap: 5px;
+              p {
+                margin: 0;
+              }
+              .amenity__icon {
+                max-width: 30px;
+                border-radius: 0;
+              }
+            }
+          }
+        }
+      }
+      .content__rooms {
+        .splide__slide {
+          height: fit-content;
+        }
+      }
+      .content__testy {
+        
       }
     }
   }

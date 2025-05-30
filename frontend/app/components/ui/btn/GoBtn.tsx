@@ -1,6 +1,7 @@
 "use client";
 
 import { animationManager, useGSAP } from "@/app/lib/gsap/animation-manager";
+import { ta } from "date-fns/locale";
 import Link from "next/link";
 type SectionType =
   | "#Hero"
@@ -14,19 +15,22 @@ interface Props {
   goToUrl?: string;
   className?: string;
   children?: React.ReactNode;
+  target?: string;
 }
 
 const LinkBtn = ({
   url,
   children,
   className,
+  target,
 }: {
   url: string;
   children?: React.ReactNode;
   className: string;
+  target?: string;
 }) => {
   return (
-    <Link href={url} className={`btn ${className}`}>
+    <Link href={url} className={`btn ${className}`} target={target}>
       {children}
     </Link>
   );
@@ -57,6 +61,7 @@ const GoBtn = ({
   goToUrl = "/",
   goToSection = "#Hero",
   children,
+  target = "",
   className = "btn",
 }: Props) => {
   return hasScroll ? (
@@ -64,7 +69,7 @@ const GoBtn = ({
       {children}
     </ScrollBtn>
   ) : (
-    <LinkBtn url={goToUrl} className={className}>
+    <LinkBtn url={goToUrl} className={className} target={target}>
       {children}
     </LinkBtn>
   );

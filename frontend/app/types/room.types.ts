@@ -35,12 +35,13 @@ export interface Page {
       title: string;
       img_icon: Image;
     }[];
+    string_btn: string;
   };
   rooms: {
     string_h3: string;
     arrObject_room: {
       string_name: string;
-      string_description: string;
+      string_dsc: string;
       img_room: Image;
     }[];
   };
@@ -52,10 +53,10 @@ export interface Page {
   };
   testy: {
     string_h2: string;
-    arrObject_testimonial: {
+    arrRef_testimonial: {
       string_name: string;
       block_info: Block[];
-      img_starts: Image[];
+      img_stars: Image[];
     }[];
   };
 }

@@ -4,7 +4,7 @@ import PopBtn from "../btn/PopBtn";
 import useModalData from "@/app/stores/useModalData.stores";
 
 const AccommodationTextModal = () => {
-  const modalDataText = useModalData((state) => state.modalDataText);
+  const { modalDataText } = useModalData();
 
   return (
     <section

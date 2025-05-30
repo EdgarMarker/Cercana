@@ -33,5 +33,5 @@ export interface Home {
 export interface Testimonial {
   string_name: string;
   block_info: Block[];
-  img_stars: Image[];
+  img_stars?: Image[];
 }

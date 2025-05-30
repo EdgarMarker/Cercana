@@ -1,16 +1,21 @@
 "use client";
 import { animationManager, useGSAP } from "@/app/lib/gsap/animation-manager";
 import useModalData from "@/app/stores/useModalData.stores";
-import React, { useEffect, useState } from "react";
 
-type ModalType = "formModal" | "sheetInfoModal" | "accommodationTextModal";
+type ModalType =
+  | "formModal"
+  | "sheetInfoModal"
+  | "accommodationTextModal"
+  | "accommodationAmenityModal"
+  | "accommodationImgModal";
 interface Props {
   showModal: boolean;
   whichModal: ModalType;
   iconDirection?: string;
   text: string;
   className?: string;
-  modalTextData?: string;
+  modalDataText?: string;
+  modalDataArray?: Array<any>;
 }
 const PopBtn = ({
   iconDirection = "btn--right",
@@ -18,16 +23,19 @@ const PopBtn = ({
   showModal = false,
   whichModal = "formModal",
   className = "btn",
-  modalTextData
+  modalDataText = "",
+  modalDataArray = [],
 }: Props) => {
   const { contextSafe } = useGSAP({ dependencies: [showModal] });
-  const setModalDataText = useModalData(state => state.setModalDataText);
+  const { setModalDataText, setModalDataArray } = useModalData();
 
   const handleBtn = contextSafe(() => {
-    if(modalTextData){
-      setModalDataText(modalTextData);
+    if (modalDataText) {
+      setModalDataText(modalDataText);
     }
-
+    if (modalDataArray.length > 0) {
+      setModalDataArray(modalDataArray);
+    }
     animationManager.toggleModal({ open: showModal, className: whichModal });
   });
   return (

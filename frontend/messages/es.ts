@@ -19,5 +19,11 @@ export const messages = {
       beds: "Camas",
       baths: "Baños",
     },
+    page: {
+      distance:{
+        distanceWalking: "Distancias caminando",
+        distanceDriving: "Distancias en coche",
+      }
+    }
   },
 };

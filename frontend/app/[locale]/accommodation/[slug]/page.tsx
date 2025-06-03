@@ -124,19 +124,19 @@ const page = async ({ params }: Props) => {
                 {data.page.distance.string_btn}
               </GoBtn>
             </article>
-            <article className="content__testy">
-              <h2>{data.page.testy.string_h2}</h2>
-              <ul role="list" className="listado__x2">
-                {data.page.testy.arrRef_testimonial.map((item, idx) => (
-                  <li key={idx}>
-                    <TestyCard data={item} />
-                  </li>
-                ))}
-              </ul>
-            </article>
           </div>
           <div className="col__right"></div>
         </div>
+      </section>
+      <section className="testy">
+        <h2>{data.page.testy.string_h2}</h2>
+        <ul role="list" className="listado__x2">
+          {data.page.testy.arrRef_testimonial.map((item, idx) => (
+            <li key={idx}>
+              <TestyCard data={item} />
+            </li>
+          ))}
+        </ul>
       </section>
     </>
   );

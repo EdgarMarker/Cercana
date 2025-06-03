@@ -8,7 +8,8 @@ type SectionType =
   | "#Intro"
   | "#Catalogue"
   | "#Explore"
-  | "#Testimonials";
+  | "#Testimonials"
+  | "#Form";
 interface Props {
   hasScroll: boolean;
   goToSection?: SectionType;

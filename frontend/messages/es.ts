@@ -1,4 +1,11 @@
 export const messages = {
+  nav: [
+    { name: "Inicio", url: "/" },
+    { name: "Alojamiento", url: "/alojamiento" },
+    { name: "Desarrollo", url: "/desarrollo" },
+    { name: "Nosotros", url: "/nosotros" },
+    { name: "Contacto", url: "/contacto" },
+  ],
   button: {
     submit: "enviar",
   },
@@ -20,10 +27,19 @@ export const messages = {
       baths: "Baños",
     },
     page: {
-      distance:{
+      distance: {
         distanceWalking: "Distancias caminando",
         distanceDriving: "Distancias en coche",
-      }
-    }
+      },
+    },
   },
+  form: {
+    name: "Nombre",
+    lastName: "Apellido",
+    email: "Correo electrónico",
+    phone: "Teléfono",
+    city: "Ciudad",
+    subject: "Asunto",
+    message: "Mensaje",
+  }
 };

@@ -1,6 +1,11 @@
-import { se } from "date-fns/locale";
-
 export const messages = {
+  nav: [
+    { name: "Home", url: "/" },
+    { name: "Accommodation", url: "/accommodation" },
+    { name: "Development", url: "/development" },
+    { name: "About", url: "/about" },
+    { name: "Contact", url: "/contact" },
+  ],
   button: {
     submit: "submit",
   },
@@ -26,5 +31,14 @@ export const messages = {
         distanceDriving: "Driving Distances",
       },
     },
+  },
+  form: {
+    name: "Name",
+    lastName: "Last Name",
+    email: "Email",
+    phone: "Phone",
+    city: "City",
+    subject: "Subject",
+    message: "Message",
   },
 };

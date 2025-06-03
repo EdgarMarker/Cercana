@@ -3,6 +3,9 @@ export interface Image {
   media: {
     url: string;
   };
+  alt?: {
+    altText: string;
+  };
 }
 
 export interface Block {

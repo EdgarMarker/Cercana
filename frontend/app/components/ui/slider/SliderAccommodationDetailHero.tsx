@@ -47,6 +47,7 @@ const SliderAccommodationDetailHero = ({ images }: Props) => {
         {images.map((image, index) => (
           <SplideSlide key={index}>
             <CustomImg
+              hasIcon={true}
               src={image.media.url}
               alt={`Slide ${index + 1}`}
               width={800}

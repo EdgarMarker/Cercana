@@ -46,6 +46,7 @@ const SliderAccommodationDetailRooms = ({ data }: Props) => {
           <SplideSlide key={index}>
             <div className="card card__roomDetail">
               <CustomImg
+                hasIcon={true}
                 src={image.img_room.media.url}
                 alt={`Slide ${index + 1}`}
                 width={300}

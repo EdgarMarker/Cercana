@@ -16,8 +16,7 @@
       width: 60%;
       .content__intro,
       .content__amenity,
-      .content__rooms,
-      .content__distance {
+      .content__rooms {
         padding: 10% 0;
         width: 100%;
         border-bottom: 1px solid #1d1d25;
@@ -61,17 +60,25 @@
           }
         }
       }
-      .content__rooms {
-        .splide__slide {
-          height: fit-content;
-        }
-      }
-      .content__testy {
-        
+      .content__distance {
+        padding: 10% 0;
+        width: 100%;
       }
     }
+    .col__right {
+      width: 40%;
+    }
   }
-  .col__right {
-    width: 40%;
+}
+
+.testy {
+  padding: 5%;
+  h2 {
+    text-align: start;
+    width: 100%;
+  }
+  background-color: var(--color-secondary-light);
+  .card.card__testy {
+    background-color: white;
   }
 }

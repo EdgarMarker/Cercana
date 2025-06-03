@@ -4,37 +4,20 @@ import "../../styles/nav.style.css";
 import React, { useEffect, useState } from "react";
 import CustomImg from "../ui/img/CustomImg";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { getMessages } from "@/messages/getMessages";
 
 interface Props {
   srcNavIcon: string;
   language: string;
 }
 const Nav = ({ srcNavIcon, language }: Props) => {
-  //todo: Add a function to change the highlight between the current page and the nav
-  const pathname = usePathname(); //return es/
-  //todo---------------------------------------------------------------------------
+
+  const L = getMessages(language);
+
+  const pathname = usePathname();
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const availableLangs = language === "es" ? ["en"] : ["es"];
-
-  const urlsEs = [
-    { name: "Inicio", url: "/" },
-    { name: "Alojamiento", url: "/alojamiento" },
-    { name: "Desarrollo", url: "/desarrollo" },
-    { name: "Nosotros", url: "/nosotros" },
-    { name: "Contacto", url: "/contacto" },
-  ];
-
-  const urlsEn = [
-    { name: "Home", url: "/" },
-    { name: "Accommodation", url: "/accommodation" },
-    { name: "Development", url: "/develop" },
-    { name: "About", url: "/about" },
-    { name: "Contact", url: "/contact" },
-  ];
-
-  const urls = language === "es" ? urlsEs : urlsEn;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,40 +46,10 @@ const Nav = ({ srcNavIcon, language }: Props) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const getLangUrl = (newLang: string) => {
-    // Mapeo de rutas
-    const routeMap = {
-      alojamiento: "accommodation",
-      desarrollo: "develop",
-      nosotros: "about",
-      contacto: "contact",
-      accommodation: "alojamiento",
-      develop: "desarrollo",
-      about: "nosotros",
-      contact: "contacto",
-    };
-
-    const segments = pathname.split("/").filter(Boolean);
-
-    if (segments.length === 0) return `/${newLang}`; // Raíz
-
-    const currentLang = segments[0];
-    const currentRoute = segments[1];
-
-    // Si hay idioma en la URL
-    if (currentLang === "es" || currentLang === "en") {
-      const translatedRoute =
-        currentRoute && routeMap[currentRoute as keyof typeof routeMap]
-          ? routeMap[currentRoute as keyof typeof routeMap]
-          : currentRoute;
-
-      return translatedRoute ? `/${newLang}/${translatedRoute}` : `/${newLang}`;
-    }
-
-    // Si no hay idioma, traducir la ruta directamente
-    const translatedRoute =
-      routeMap[segments[0] as keyof typeof routeMap] || segments[0];
-    return `/${newLang}/${translatedRoute}`;
+  // Función simple para generar URL
+  const getLanguageUrl = (targetLang: string) => {
+    const currentPath = pathname.replace(/^\/(es|en)/, "");
+    return `/${targetLang}${currentPath}`;
   };
 
   //* Desktop Nav
@@ -104,9 +57,9 @@ const Nav = ({ srcNavIcon, language }: Props) => {
     <header className="nav__desktopHeader">
       <nav className="radius__10">
         <ul role="list">
-          {urls.slice(0, 3).map((url, idx) => (
+          {L.nav.slice(0, 3).map((nav, idx) => (
             <li key={idx}>
-              <a href={url.url}>{url.name}</a>
+              <a href={nav.url}>{nav.name}</a>
             </li>
           ))}
         </ul>
@@ -122,9 +75,9 @@ const Nav = ({ srcNavIcon, language }: Props) => {
         </a>
 
         <ul role="list">
-          {urls.slice(3).map((url, idx) => (
+          {L.nav.slice(3).map((nav, idx) => (
             <li key={idx}>
-              <a href={url.url}>{url.name}</a>
+              <a href={nav.url}>{nav.name}</a>
             </li>
           ))}
           <li>
@@ -137,13 +90,8 @@ const Nav = ({ srcNavIcon, language }: Props) => {
             {isLangOpen && (
               <ul className="nav__desktopLangBox" role="list">
                 {availableLangs.map((lang, idx) => (
-                  <a
-                    className={`lang__${lang}`}
-                    href={getLangUrl(lang)}
-                    key={idx}
-                  >
-                    {" "}
-                    {lang}{" "}
+                  <a className={`lang__${lang}`} href={`/${lang}`} key={idx}>
+                    {lang}
                   </a>
                 ))}
               </ul>
@@ -179,11 +127,7 @@ const Nav = ({ srcNavIcon, language }: Props) => {
               {isLangOpen && (
                 <ul className="nav__mobileLangBox" role="list">
                   {availableLangs.map((lang, idx) => (
-                    <a
-                      className={`lang__${lang}`}
-                      href={getLangUrl(lang)}
-                      key={idx}
-                    >
+                    <a className={`lang__${lang}`} href={`/${lang}`} key={idx}>
                       {lang}
                     </a>
                   ))}
@@ -203,9 +147,9 @@ const Nav = ({ srcNavIcon, language }: Props) => {
         {/* Mobile menu when open */}
         {isMobileMenuOpen && (
           <ul className="nav__mobileMenuBox" role="list">
-            {urls.map((url, idx) => (
+            {L.nav.map((nav, idx) => (
               <li key={idx}>
-                <a href={url.url}>{url.name}</a>
+                <a href={nav.url}>{nav.name}</a>
               </li>
             ))}
           </ul>

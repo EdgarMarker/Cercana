@@ -71,7 +71,7 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
         <div className="grad__left"></div>
         <div className="grad__down"></div>
-        <div className="column__1">
+        <div className="column__1 dashboard__container">
           <Dashboard locale={locale} />
         </div>
       </section>

@@ -45,14 +45,14 @@ const page = async ({ params }: Props) => {
   ];
   return (
     <>
-      <section className="hero">
+      <section className="hero fadeInOut">
         <div className="column__1">
           <h1>{data.string_title}</h1>
           <p>{data.general.string_location}</p>
           <SliderAccommodationDetail images={data.page.hero.arr_img} />
         </div>
       </section>
-      <section className="content">
+      <section className="content fadeInOut">
         <div className="column__2">
           <div className="col__left">
             <article className="content__intro">
@@ -66,6 +66,7 @@ const page = async ({ params }: Props) => {
               </ul>
               <p>{previewText}</p>
               <PopBtn
+                className="btn__primary"
                 showModal={true}
                 whichModal="accommodationTextModal"
                 text={data.page.intro.string_btn}
@@ -93,6 +94,7 @@ const page = async ({ params }: Props) => {
                     ))}
                 </ul>
                 <PopBtn
+                  className="btn__primary"
                   showModal={true}
                   whichModal="accommodationAmenityModal"
                   text={data.page.amenities.string_btn}
@@ -117,6 +119,8 @@ const page = async ({ params }: Props) => {
               />
               {/*Google Maps*/}
               <GoBtn
+                iconDirection="btn--down"
+                className="btn__primary"
                 hasScroll={false}
                 goToUrl={data.general.string_urlLocation}
                 target="_blank"
@@ -128,7 +132,7 @@ const page = async ({ params }: Props) => {
           <div className="col__right"></div>
         </div>
       </section>
-      <section className="testy">
+      <section className="testy fadeInOut">
         <h2>{data.page.testy.string_h2}</h2>
         <ul role="list" className="listado__x2">
           {data.page.testy.arrRef_testimonial.map((item, idx) => (

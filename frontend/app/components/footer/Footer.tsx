@@ -30,7 +30,7 @@ const Footer = async ({ language }: Props) => {
   const urls = language === "es" ? urlsEs : urlsEn;
   return (
     <footer className="footer fadeInOut">
-      <div className="column__1">
+      <div className="column__1 fadeInOut">
         <GoBtn hasScroll={true} goToSection="#Hero">
           Ir arriba
         </GoBtn>
@@ -44,7 +44,7 @@ const Footer = async ({ language }: Props) => {
         />
       </div>
 
-      <div className="column__1">
+      <div className="column__1 fadeInOut">
         <div className="listado__x4">
           <div className="foot__item">
             <h3>{language === "es" ? "Mapa del sitio" : "Site Map"}</h3>

@@ -1,41 +1,111 @@
+.btn.btn__primary {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+  width: fit-content;
+  &::after {
+    border-right: 0.15em solid var(--color-primary);
+    border-bottom: 0.15em solid var(--color-primary);
+  }
+}
+
 .hero {
   padding: 5%;
   padding-top: calc(70px + 5%);
   .column__1 {
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
     h1 {
       font-size: 3em;
+    }
+  }
+  .splide {
+    position: relative;
+    picture {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+    .arrowsContainer {
+      position: relative;
+      pointer-events: all;
+      height: 5vh;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .splide__arrows {
+      position: absolute;
+      top: -100%;
+      width: fit-content;
+      display: flex;
+      gap: 20px;
+      button {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: translate(0%, 0%);
+        background: none;
+        svg {
+          fill: var(--color-primary);
+          &:hover {
+            fill: var(--color-primary);
+          }
+        }
+      }
     }
   }
 }
 .content {
   padding: 5%;
+  background-color: #f3f3f3;
   .column__2 {
     .col__left {
       width: 60%;
       .content__intro,
       .content__amenity,
-      .content__rooms {
-        padding: 10% 0;
+      .content__rooms,
+      .content__distance {
+        padding: 5% 0;
         width: 100%;
         border-bottom: 1px solid #1d1d25;
       }
       .content__intro {
         padding-top: 0;
+        p {
+          padding: 5% 0;
+        }
         .intro__list {
           display: flex;
           background-color: var(--color-grey);
           border-radius: 15px;
           width: 100%;
           li {
+            position: relative;
             width: 100%;
             text-align: center;
             padding: 2%;
-            border-left: 1px solid #fff;
             margin: 0;
             display: flex;
             flex-direction: column;
+            .value {
+              font-weight: bolder;
+              color: var(--color-primary);
+            }
+          }
+          li::before {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-size: cover;
+            background-color: #868689;
+            position: absolute;
+          }
+          li:first-child::before {
+            display: none;
           }
         }
       }
@@ -61,8 +131,49 @@
         }
       }
       .content__distance {
-        padding: 10% 0;
-        width: 100%;
+        border-bottom: none;
+        .ul,
+        li {
+          text-decoration: none;
+          list-style: none;
+        }
+      }
+      .content__rooms {
+        .splide {
+          position: relative;
+          picture {
+            aspect-ratio: 16 / 9;
+            height: auto;
+          }
+          .arrowsContainer {
+            position: relative;
+            pointer-events: all;
+            height: 4vh;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+          }
+          .splide__arrows {
+            position: absolute;
+            top: -100%;
+            width: fit-content;
+            display: flex;
+            gap: 20px;
+            button {
+              position: relative;
+              left: 0;
+              top: 0;
+              transform: translate(0%, 0%);
+              background: none;
+              svg {
+                fill: var(--color-primary);
+                &:hover {
+                  fill: var(--color-primary);
+                }
+              }
+            }
+          }
+        }
       }
     }
     .col__right {
@@ -79,6 +190,63 @@
   }
   background-color: var(--color-secondary-light);
   .card.card__testy {
-    background-color: white;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .column__2 {
+    gap: 3%;
+    & .col__left,
+    & .col__right {
+      width: 48.5%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .column__2 {
+    flex-direction: column;
+    gap: 24px;
+    & .col__left,
+    & .col__right {
+      width: 100% !important;
+    }
+  }
+
+  .content__intro,
+  .content__amenity,
+  .content__rooms,
+  .content__distance {
+    padding: 5% 0;
+    width: 100%;
+    border-bottom: 1px solid #1d1d25;
+  }
+
+  .content__distance {
+    .tab__distanceRoom,
+    .dashboard {
+      width: 100% !important;
+    }
+    .dashboard {
+      button {
+        height: 100%;
+      }
+    }
+  }
+  .content__amenity .amenity__list {
+    columns: 1;
+    gap: 10px;
+  }
+
+  .testy {
+    padding: 10%;
+    h2 {
+      text-align: center;
+    }
+    .card.card__testy {
+      padding: 10%;
+    }
   }
 }

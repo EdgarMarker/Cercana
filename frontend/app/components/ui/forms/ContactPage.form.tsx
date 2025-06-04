@@ -35,7 +35,7 @@ const ContactPageForm = ({ textBtn, locale }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+    <form onSubmit={handleSubmit(onSubmit)} className="contact-form fadeInOut">
       <div className="form-row">
         <div className="form-group">
           <label>{L.form.name}*</label>
@@ -89,9 +89,10 @@ const ContactPageForm = ({ textBtn, locale }: Props) => {
         <textarea {...register("mensaje")} rows={4} />
       </div>
 
-      <button type="submit" disabled={isSubmitting}>
+      <button type="submit" disabled={isSubmitting} className="btn btn__primary">
         {isSubmitting ? "Enviando..." : textBtn}
       </button>
+
     </form>
   );
 };

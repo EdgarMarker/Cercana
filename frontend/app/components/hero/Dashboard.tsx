@@ -19,7 +19,9 @@ const Dashboard = ({ locale }: { locale: string }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [roomCategory, setRoomCategory] = useState<RoomCategory[]>([]);
   const [roomLocation, setRoomLocation] = useState<RoomLocation[]>([]);
-  const [filteredCategories, setFilteredCategories] = useState<RoomCategory[]>([]);
+  const [filteredCategories, setFilteredCategories] = useState<RoomCategory[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,10 +38,18 @@ const Dashboard = ({ locale }: { locale: string }) => {
     const filterCategories = async () => {
       if (selectedLocation) {
         try {
-          const availableCategories = await getCategoriesByLocation(locale, selectedLocation);
+          const availableCategories = await getCategoriesByLocation(
+            locale,
+            selectedLocation
+          );
           setFilteredCategories(availableCategories);
-          
-          if (selectedCategory && !availableCategories.some(cat => cat.string_name === selectedCategory)) {
+
+          if (
+            selectedCategory &&
+            !availableCategories.some(
+              (cat) => cat.string_name === selectedCategory
+            )
+          ) {
             setSelectedCategory("");
           }
         } catch (error) {
@@ -91,8 +101,7 @@ const Dashboard = ({ locale }: { locale: string }) => {
           <option value="" disabled>
             {selectedLocation
               ? L.dashboard.accommodationType
-              : L.dashboard.firstZone
-            }
+              : L.dashboard.firstZone}
           </option>
           {filteredCategories.map((category) => (
             <option key={category.string_name} value={category.string_name}>
@@ -102,7 +111,7 @@ const Dashboard = ({ locale }: { locale: string }) => {
         </select>
       </li>
       <li className="dashboard__item">
-        <DayPickerComponent locale={locale}/>
+        <DayPickerComponent locale={locale} />
       </li>
       <li className="dashboard__item">
         <SearchBtn

@@ -26,7 +26,7 @@ const page = async ({ params }: Props) => {
               hasImg={false}
               data={dataPage.hero.block_info || []}
             />
-            <GoBtn hasScroll={true} goToSection="#Form">
+            <GoBtn hasScroll={true} goToSection="#Form" className="btn__secondary" iconDirection="btn--down">
               {dataPage.hero.string_btn}
             </GoBtn>
           </div>
@@ -50,7 +50,7 @@ const page = async ({ params }: Props) => {
           </div>
         </div>
       </section>
-      <section className="form" id="Form">
+      <section className="form fadeInOut" id="Form">
         <div className="column__2">
           <div className="col__left">
             <h3>{dataPage.form.string_h3}</h3>

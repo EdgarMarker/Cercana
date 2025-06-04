@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import React, { useState } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -35,6 +35,7 @@ const SliderAccommodationDetailHero = ({ images }: Props) => {
     <>
       {/* Slider Principal */}
       <Splide
+        hasTrack={false}
         options={{
           type: "loop",
           perPage: 1,
@@ -44,20 +45,25 @@ const SliderAccommodationDetailHero = ({ images }: Props) => {
           pagination: true,
         }}
       >
-        {images.map((image, index) => (
-          <SplideSlide key={index}>
-            <CustomImg
-              hasIcon={true}
-              src={image.media.url}
-              alt={`Slide ${index + 1}`}
-              width={800}
-              height={600}
-              category="xl"
-              onClick={() => openLightbox(index)}
-              style={{ cursor: "pointer" }}
-            />
-          </SplideSlide>
-        ))}
+        <div className="arrowsContainer">
+          <div className="splide__arrows" />
+        </div>
+        <SplideTrack>
+          {images.map((image, index) => (
+            <SplideSlide key={index}>
+              <CustomImg
+                hasIcon={true}
+                src={image.media.url}
+                alt={`Slide ${index + 1}`}
+                width={600}
+                height={400}
+                category="xl"
+                onClick={() => openLightbox(index)}
+                style={{ cursor: "pointer" }}
+              />
+            </SplideSlide>
+          ))}
+        </SplideTrack>
       </Splide>
 
       {/* Lightbox con yet-another-react-lightbox */}

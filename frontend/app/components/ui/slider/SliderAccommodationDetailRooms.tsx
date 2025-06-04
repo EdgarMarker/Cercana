@@ -2,7 +2,7 @@
 "use client";
 import { Image } from "@/app/types/globals.types";
 import React, { useState } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -33,6 +33,7 @@ const SliderAccommodationDetailRooms = ({ data }: Props) => {
     <>
       {/* Slider Principal */}
       <Splide
+        hasTrack={false}
         options={{
           type: "loop",
           perPage: 2,
@@ -42,24 +43,29 @@ const SliderAccommodationDetailRooms = ({ data }: Props) => {
           pagination: true,
         }}
       >
-        {data.page.rooms.arrObject_room.map((image, index) => (
-          <SplideSlide key={index}>
-            <div className="card card__roomDetail">
-              <CustomImg
-                hasIcon={true}
-                src={image.img_room.media.url}
-                alt={`Slide ${index + 1}`}
-                width={300}
-                height={200}
-                category="regular"
-                onClick={() => openLightbox(index)}
-                style={{ cursor: "pointer" }}
-              />
-              <h3>{image.string_name}</h3>
-              <p>{image.string_dsc}</p>
-            </div>
-          </SplideSlide>
-        ))}
+        <div className="arrowsContainer">
+          <div className="splide__arrows" />
+        </div>
+        <SplideTrack>
+          {data.page.rooms.arrObject_room.map((image, index) => (
+            <SplideSlide key={index}>
+              <div className="card card__roomDetail">
+                <CustomImg
+                  hasIcon={true}
+                  src={image.img_room.media.url}
+                  alt={`Slide ${index + 1}`}
+                  width={300}
+                  height={200}
+                  category="regular"
+                  onClick={() => openLightbox(index)}
+                  style={{ cursor: "pointer" }}
+                />
+                <h3>{image.string_name}</h3>
+                <p>{image.string_dsc}</p>
+              </div>
+            </SplideSlide>
+          ))}
+        </SplideTrack>
       </Splide>
 
       <Lightbox

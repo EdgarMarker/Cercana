@@ -7,17 +7,16 @@ const AccommodationTextModal = () => {
   const { modalDataText } = useModalData();
 
   return (
-    <section
-      className="accommodationTextModal"
-      style={{ backgroundColor: "white" }}
-    >
-      <PopBtn
-        className="btn__secondary"
-        showModal={false}
-        text="close"
-        whichModal="accommodationTextModal"
-      />
-      <p>{modalDataText}</p>
+    <section className="accommodationTextModal">
+      <div className="column__1">
+        <PopBtn
+          className="btn__primary"
+          showModal={false}
+          text="close"
+          whichModal="accommodationTextModal"
+        />
+        <p>{modalDataText}</p>
+      </div>
     </section>
   );
 };

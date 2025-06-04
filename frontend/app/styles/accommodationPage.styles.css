@@ -1,3 +1,5 @@
+
+
 .hero,
 .content {
   padding: 5%;
@@ -5,6 +7,7 @@
 
 .hero {
   padding-top: calc(70px + 5%);
+  background-color: var(--color-secondary-light);
   .column__1 {
     flex-direction: column;
     h1, .portableText{
@@ -13,7 +16,7 @@
     }
     /**Dashboard*/
     .dashboard {
-      background-color: var(--color-secondary-light);
+      background-color: var(--color-white);
       margin: 0 5%;
       width: 100%;
       display: grid;
@@ -58,4 +61,7 @@
       }
     }
   }
+}
+.content{
+  background-color: var(--color-white);
 }

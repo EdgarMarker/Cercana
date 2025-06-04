@@ -5,6 +5,7 @@ import { useSearchRoomStore } from "@/app/stores/searchRoom.stores";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { getMessages } from "@/messages/getMessages";
+import { animationManager, useGSAP } from "@/app/lib/gsap/animation-manager";
 
 interface Props {
   selectedCategory: string;
@@ -25,7 +26,9 @@ const SearchBtn = ({
 
   const router = useRouter();
 
-  const handleSearch = async () => {
+  const { contextSafe } = useGSAP();
+
+  const handleSearch = contextSafe(async () => {
     if (!selectedCategory || !selectedLocation) {
       toast.warning(L.dashboard.errorMessage);
       return;
@@ -49,7 +52,7 @@ const SearchBtn = ({
     } finally {
       setIsSearching(false);
     }
-  };
+  });
 
   return (
     <button onClick={handleSearch} className="btn btn__search">

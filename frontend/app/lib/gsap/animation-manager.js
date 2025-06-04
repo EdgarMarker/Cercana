@@ -34,16 +34,27 @@ export const animationManager = {
     const stagger = 0.1;
 
     requestAnimationFrame(() => {
-      // Seleccionar elementos para animaciones
       const elements = [
         ".fadeInOut h3",
         ".fadeInOut h2",
         ".fadeInOut p",
+        ".fadeInOut li",
         ".fadeInOut picture.imgContainer",
       ];
 
-      // Configurar estado inicial para todos los elementos
-      elements.forEach((selector) => {
+      // Filtrar elementos que existen en el DOM
+      const validElements = elements.filter((selector) => {
+        const el = document.querySelectorAll(selector);
+        return el.length > 0; // Solo incluir selectores con elementos existentes
+      });
+
+      if (validElements.length === 0) {
+        console.warn("No se encontraron elementos para animar.");
+        return; // Salir si no hay elementos válidos
+      }
+
+      // Configurar estado inicial para todos los elementos válidos
+      validElements.forEach((selector) => {
         const axis =
           selector.includes("picture") || selector.includes("p") ? "y" : "x";
         gsap.set(selector, { opacity: 0, [axis]: axis === "y" ? 50 : -50 });
@@ -81,8 +92,8 @@ export const animationManager = {
           }),
       };
 
-      // Crear batch ScrollTrigger
-      ScrollTrigger.batch(elements, batchConfig);
+      // Crear batch ScrollTrigger solo con elementos válidos
+      ScrollTrigger.batch(validElements, batchConfig);
     });
 
     ScrollTrigger.refresh();
@@ -90,6 +101,7 @@ export const animationManager = {
 
   // *Toggle Modal
   toggleModal({ open, className }) {
+
     gsap.to(`.${className}`, {
       duration: 0.5,
       ease: "power2.inOut",
@@ -116,37 +128,86 @@ export const animationManager = {
 
   // *Hero Home
   initHeroHome() {
-
     const fadeDuration = 1;
     const stayDuration = 7;
     const tl = gsap.timeline({ repeat: -1 });
 
-    // Imagen 1
-    tl.to(".hero__bgContainer:nth-child(2)", {
-      autoAlpha: 1,
-      duration: fadeDuration,
-      onStart: () =>
-        gsap.fromTo(".hero__bgContainer:nth-child(2)", { scale: 1 }, { scale: 1.3, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
-    })
-    .to(".hero__bgContainer:nth-child(3)", {
-      autoAlpha: 1,
-      duration: fadeDuration,
-      onStart: () =>
-        gsap.fromTo(".hero__bgContainer:nth-child(3)", { scale: 1.3 }, { scale: 1, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
-    }, `+=${stayDuration}`)
-    .to(".hero__bgContainer:nth-child(2)", { autoAlpha: 0, duration: fadeDuration }, "<")
-    .to(".hero__bgContainer:nth-child(4)", {
-      autoAlpha: 1,
-      duration: fadeDuration,
-      onStart: () =>
-        gsap.fromTo(".hero__bgContainer:nth-child(4)", { scale: 1 }, { scale: 1.3, duration: fadeDuration + stayDuration + 4, ease: "power2.inOut" })
-    }, `+=${stayDuration}`)
-    .to(".hero__bgContainer:nth-child(3)", { autoAlpha: 0, duration: fadeDuration }, "<")
+    // Seleccionar los elementos y validar su existencia
+    const elements = [
+      ".hero__bgContainer:nth-child(2)",
+      ".hero__bgContainer:nth-child(3)",
+      ".hero__bgContainer:nth-child(4)",
+    ];
 
-    // No animamos img1 aquí; dejamos que el fondo visual sea la transición
-    .to(".hero__bgContainer:nth-child(4)", { autoAlpha: 0, duration: fadeDuration }, `+=${stayDuration} - 0.3`);
-    
+    const validElements = elements.filter((selector) => {
+      const el = document.querySelector(selector);
+      return el !== null; // Solo incluir selectores con elementos existentes
+    });
+
+    if (validElements.length === 0) {
+      console.warn("No se encontraron elementos para animar en initHeroHome.");
+      return; // Salir si no hay elementos válidos
+    }
+
+    // Animaciones solo para elementos válidos
+    tl.to(validElements[0], {
+      autoAlpha: 1,
+      duration: fadeDuration,
+      onStart: () =>
+        gsap.fromTo(
+          validElements[0],
+          { scale: 1 },
+          {
+            scale: 1.3,
+            duration: fadeDuration + stayDuration + 4,
+            ease: "power2.inOut",
+          }
+        ),
+    })
+      .to(
+        validElements[1],
+        {
+          autoAlpha: 1,
+          duration: fadeDuration,
+          onStart: () =>
+            gsap.fromTo(
+              validElements[1],
+              { scale: 1.3 },
+              {
+                scale: 1,
+                duration: fadeDuration + stayDuration + 4,
+                ease: "power2.inOut",
+              }
+            ),
+        },
+        `+=${stayDuration}`
+      )
+      .to(validElements[0], { autoAlpha: 0, duration: fadeDuration }, "<")
+      .to(
+        validElements[2],
+        {
+          autoAlpha: 1,
+          duration: fadeDuration,
+          onStart: () =>
+            gsap.fromTo(
+              validElements[2],
+              { scale: 1 },
+              {
+                scale: 1.3,
+                duration: fadeDuration + stayDuration + 4,
+                ease: "power2.inOut",
+              }
+            ),
+        },
+        `+=${stayDuration}`
+      )
+      .to(validElements[1], { autoAlpha: 0, duration: fadeDuration }, "<")
+      .to(
+        validElements[2],
+        { autoAlpha: 0, duration: fadeDuration },
+        `+=${stayDuration} - 0.3`
+      );
+
     ScrollTrigger.refresh();
   },
-
 };

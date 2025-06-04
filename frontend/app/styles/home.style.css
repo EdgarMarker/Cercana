@@ -97,9 +97,11 @@
   }
 
   /* *Dashboard */
+  .dashboard__container{
+    padding: 20px 5%;
+  }
   .dashboard {
     background-color: var(--color-secondary-light);
-    margin: 0 5%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

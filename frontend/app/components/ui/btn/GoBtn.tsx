@@ -17,6 +17,7 @@ interface Props {
   className?: string;
   children?: React.ReactNode;
   target?: string;
+  iconDirection?: string;
 }
 
 const LinkBtn = ({
@@ -24,26 +25,30 @@ const LinkBtn = ({
   children,
   className,
   target,
+  iconDirection = "btn--right",
 }: {
   url: string;
   children?: React.ReactNode;
   className: string;
   target?: string;
+  iconDirection?: string;
 }) => {
   return (
-    <Link href={url} className={`btn ${className}`} target={target}>
+    <a href={url} className={`btn ${className} ${iconDirection}`} target={target}>
       {children}
-    </Link>
+    </a>
   );
 };
 const ScrollBtn = ({
   children,
   target,
   className,
+  iconDirection = "btn--right",
 }: {
   children: React.ReactNode | string;
   target: string;
   className: string;
+  iconDirection?: string;
 }) => {
   const { contextSafe } = useGSAP();
 
@@ -51,13 +56,14 @@ const ScrollBtn = ({
     animationManager.scrollTo(target);
   });
   return (
-    <button className={`btn ${className}`} onClick={() => handleScroll()}>
+    <button className={`btn ${className} ${iconDirection}`} onClick={() => handleScroll()}>
       {children}
     </button>
   );
 };
 
 const GoBtn = ({
+  iconDirection = "btn--right",
   hasScroll = true,
   goToUrl = "/",
   goToSection = "#Hero",
@@ -66,11 +72,11 @@ const GoBtn = ({
   className = "btn",
 }: Props) => {
   return hasScroll ? (
-    <ScrollBtn target={goToSection} className={className}>
+    <ScrollBtn target={goToSection} className={className} iconDirection={iconDirection}>
       {children}
     </ScrollBtn>
   ) : (
-    <LinkBtn url={goToUrl} className={className} target={target}>
+    <LinkBtn url={goToUrl} className={className} target={target} iconDirection={iconDirection}>
       {children}
     </LinkBtn>
   );

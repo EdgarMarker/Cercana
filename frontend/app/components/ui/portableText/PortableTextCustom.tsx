@@ -34,7 +34,7 @@ const PortableTextCustom = ({
     },
   };
   return (
-    <div className={`portableText`}>
+    <div className={`portableText fadeInOut`}>
       <PortableText value={data} components={components} />
     </div>
   );

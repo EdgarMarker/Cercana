@@ -13,7 +13,7 @@ const page = async ({ params }: Props) => {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero fadeInOut">
         <div className="column__2">
           <div className="col__left">
             <h1>{pageData.hero.string_h1}</h1>
@@ -33,7 +33,7 @@ const page = async ({ params }: Props) => {
           </div>
         </div>
       </section>
-      <section className="intro">
+      <section className="intro fadeInOut">
         <div className="column__2">
           <div className="col__left">
             <PortableTextCustom
@@ -57,7 +57,7 @@ const page = async ({ params }: Props) => {
           </div>
         </div>
       </section>
-      <section className="founders">
+      <section className="founders fadeInOut">
         <div className="column__1">
           {pageData.founders.arr_founders.map((founder, index) => (
             <div key={index} className="founder">
@@ -74,7 +74,7 @@ const page = async ({ params }: Props) => {
           ))}
         </div>
       </section>
-      <section className="values">
+      <section className="values fadeInOut">
         <div className="column__2">
           <div className="col__left">
             <h3>{pageData.values.string_h3}</h3>
@@ -101,7 +101,7 @@ const page = async ({ params }: Props) => {
           </ul>
         </div>
       </section>
-      <section className="promises">
+      <section className="promises fadeInOut">
         <div className="column__2">
           <div className="col__left">
             <PortableTextCustom

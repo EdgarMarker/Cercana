@@ -37,7 +37,6 @@ export default async function HomePage({ params }: HomePageProps) {
               src={img.media?.url || ""}
               alt="Hero background static"
               category="xl"
-              fill={true}
             />
           ))}
         </div>
@@ -51,7 +50,6 @@ export default async function HomePage({ params }: HomePageProps) {
                 src={img.media?.url || ""}
                 alt={`Hero background ${index + 1}`}
                 category="xl"
-                fill={true}
               />
             ))}
 
@@ -145,11 +143,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="column__2">
           <div className="col__left">
             <PortableTextCustom data={data.explore.block_info} hasImg={false} />
-            <GoBtn
-              hasScroll={false}
-              goToUrl=""
-              className="btn__primary"
-            >
+            <GoBtn hasScroll={false} goToUrl="" className="btn__primary">
               {data.explore.string_btn}
             </GoBtn>
           </div>

@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={libreFranklin.variable}>
+    <html  className={libreFranklin.variable} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

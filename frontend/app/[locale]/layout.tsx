@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import Footer from "../components/footer/Footer";
 import AccommodationTextModal from "../components/ui/modal/AccommodationTextModal";
 import AccommodationAmenityModal from "../components/ui/modal/AccommodationAmenityModal";
+import LanguageUpdater from "./LanguageUpdater";
 
 interface Props {
   children: ReactNode;
@@ -18,8 +19,10 @@ interface Props {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   const company = await getCompanyData();
+  const currentLocale = locale === "es" ? "es" : "en";
   return (
-    <div>
+    <>
+      <LanguageUpdater locale={currentLocale} />
       <Nav language={locale} srcNavIcon={company.img_logoNav.media.url} />
       <DynamicScrollSmootherProvider>
         {children}
@@ -30,6 +33,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       <AccommodationTextModal />
       <AccommodationAmenityModal />
       <Toaster position="bottom-right" richColors closeButton={true} />
-    </div>
+    </>
   );
 }

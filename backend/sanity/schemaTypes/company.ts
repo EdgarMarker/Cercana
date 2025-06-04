@@ -11,6 +11,10 @@ export default {
       title: 'Redes sociales',
     },
     {
+      name: 'form',
+      title: 'Formulario',
+    },
+    {
       name: 'privacy',
       title: 'Privacidad',
     },
@@ -83,6 +87,19 @@ export default {
           name: 'string_ytLink',
           title: 'Enlace a YouTube',
           type: 'string',
+        },
+      ],
+    },
+    {
+      name: 'form',
+      title: 'Formulario hubspot',
+      type: 'object',
+      group: 'form',
+      fields: [
+        {
+          name: 'script_hubspot',
+          title: 'Script de HubSpot',
+          type: 'text',
         },
       ],
     },

@@ -17,6 +17,8 @@ const CustomImg = ({
   containerClassName = "",
   category = "custom",
   quality,
+  width,
+  height,
   ...props
 }: Props) => {
   const categoryConfig: Record<
@@ -25,22 +27,32 @@ const CustomImg = ({
       sizes: string;
       quality: number;
       priority?: boolean;
+      width?: number | `${number}` | undefined;
+      height?: number | `${number}` | undefined;
     }
   > = {
     xl: {
       sizes: "100vw",
+      width: 1200,
+      height: 800,
       quality: 85,
       priority: true,
     },
     regular: {
+      width: 300,
+      height: 300,
       sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
       quality: 80,
     },
     small: {
+      width: 50,
+      height: 50,
       sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 25vw",
       quality: 75,
     },
     custom: {
+      width: width || 200, 
+      height: height || 200,
       sizes: (props.sizes as string) || "100vw",
       quality: 80,
     },
@@ -55,8 +67,6 @@ const CustomImg = ({
           <Image
             src={icon}
             alt="Icon"
-            width={30}
-            height={30}
             objectFit="contain"
           />
         </div>
@@ -66,6 +76,8 @@ const CustomImg = ({
         className="img"
         sizes={props.sizes || config.sizes}
         quality={quality || config.quality}
+        width={config.width} 
+        height={config.height} 
         priority={
           props.priority !== undefined ? props.priority : config.priority
         }

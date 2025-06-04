@@ -1,4 +1,129 @@
+.intro,
+.founders,
+.values,
+.promises {
+  padding: 5%;
+  position: relative;
+}
+.intro,
+.founders {
+  background-color: white;
+}
+.values,
+.promises {
+  background-color: var(--color-secondary-light);
+}
 .hero {
   padding: 5%;
   padding-top: calc(5% + 60px);
+}
+
+.intro {
+  .column__2 {
+    .col__left {
+      width: 30%;
+    }
+    .col__right {
+      position: relative;
+      width: 70%;
+      padding-left: 15%;
+      .portableText {
+        & > p {
+          padding-left: 25%;
+        }
+        picture {
+          border-radius: 10px;
+          aspect-ratio: 16/9;
+          height: 250px;
+        }
+      }
+    }
+  }
+  .intro__img{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    aspect-ratio: 1/1;
+    height: 300px;
+    picture{
+      border-radius: 10px;
+    }
+    img {
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+}
+
+.founders {
+  .founder {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    .founder__info {
+      height: fit-content;
+    }
+  }
+}
+
+.values {
+  .values__list {
+    padding-top: 5%;
+    max-width: 100%;
+    li {
+      aspect-ratio: 1/1;
+      height: auto;
+      border-radius: 10px;
+      background-color: var(--color-secondary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5%;
+      picture {
+        aspect-ratio: 1/1;
+        height: 50px;
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+.promises {
+  min-height: 25vh;
+  padding-right: 0;
+  padding-top: 0;
+  .column__2 {
+    .col__left {
+      padding: 10% 0;
+      justify-content: center;
+    }
+    .col__right {
+      height: 25vh;
+    }
+  }
+  .promises__img1,
+  .promises__img2 {
+    .imgContainer {
+      border-radius: 10px !important;
+    }
+  }
+  .promises__img1 {
+    position: absolute;
+    top: -10%;
+    right: 0;
+    aspect-ratio: 1/1.25;
+    z-index: -1;
+    width: 400px;
+  }
+  .promises__img2 {
+    position: absolute;
+    top: 40%;
+    left: 65%;
+    aspect-ratio: 1/1.12;
+    z-index: -1;
+    width: 300px;
+  }
 }

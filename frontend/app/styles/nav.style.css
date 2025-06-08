@@ -119,10 +119,23 @@
       }
       li {
         display: flex;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
         width: auto;
         margin: 0;
         position: relative;
+        &::before{
+          content: "";
+          position: absolute;
+          display: block;
+          height: 3px;
+          width: 100%;
+          background-color: var(--color-secondary);
+          bottom: 0;
+          left: 0;
+          visibility: hidden;
+        }
         a{
           font-size: 16px;
           margin: 0;

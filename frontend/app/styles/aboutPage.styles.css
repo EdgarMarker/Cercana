@@ -1,3 +1,13 @@
+nav{
+  ul:nth-child(3){
+    li:nth-child(1){
+      &::before{
+        visibility: visible;
+      }
+    }
+  }
+}
+
 .intro,
 .founders,
 .values,

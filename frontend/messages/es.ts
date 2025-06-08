@@ -11,9 +11,9 @@ export const messages = {
   },
   dashboard: {
     zoneInterest: "Zona de Interés",
-    firstZone: "Selecciona una zona de interés",
+    firstZone: "Tipo de Alojamiento",
     accommodationType: "Tipo de Alojamiento",
-    selectDates: "Seleccionar fechas",
+    selectDates: "Entrada / Salida",
     searching: "buscando...",
     searchAccommodation: "Buscar Alojamiento",
     errorMessage:

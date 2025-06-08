@@ -57,13 +57,14 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="col__left">
             <h1>{data.hero.string_h1}</h1>
             <h2>{data.hero.string_h2}</h2>
-            <PopBtn
+            <GoBtn
+              hasScroll= {true}
+              goToSection = "#Intro"
               className="btn__secondary"
-              showModal={true}
-              whichModal="formModal"
-              iconDirection=""
-              text={data.hero.string_btn}
-            />
+            >
+              {data.hero.string_btn}
+            </GoBtn>
+            
           </div>
           <div className="col__right"></div>
         </div>

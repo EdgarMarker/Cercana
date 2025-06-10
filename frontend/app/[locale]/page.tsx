@@ -116,19 +116,52 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="column__1">
           <div className="parent">
             <div className="div1">
-              <div>1</div>
+              <a>
+                <CustomImg
+                  containerClassName=""
+                  src={data.intro.img.media?.url || ""}
+                  alt="intro imagen referencia"
+                  width={960}
+                  height={720}
+                  category="regular"
+                />
+              </a>
             </div>
             <div className="div2">
-              <div>2</div>
+              <a>
+                <CustomImg
+                  containerClassName=""
+                  src={data.intro.img.media?.url || ""}
+                  alt="intro imagen referencia"
+                  width={960}
+                  height={720}
+                  category="regular"
+                />
+              </a>
             </div>
             <div className="div3">
-              <div>3</div>
+              <a>
+                <CustomImg
+                  containerClassName=""
+                  src={data.intro.img.media?.url || ""}
+                  alt="intro imagen referencia"
+                  width={960}
+                  height={720}
+                  category="regular"
+                />
+              </a>
             </div>
             <div className="div4">
-              <div>4</div>
-            </div>
-            <div className="div5">
-              <div>5</div>
+              <a>
+                <CustomImg
+                  containerClassName=""
+                  src={data.intro.img.media?.url || ""}
+                  alt="intro imagen referencia"
+                  width={960}
+                  height={720}
+                  category="regular"
+                />
+              </a>
             </div>
           </div>
           <GoBtn

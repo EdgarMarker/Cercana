@@ -362,7 +362,7 @@ nav{
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(4, 1fr);
-      margin: 5% 0;
+      margin: 2% 0;
       grid-gap: 30px;
     }
 
@@ -375,7 +375,7 @@ nav{
       display: flex;
       justify-content: center;
       align-items: center;
-      & > a {
+      .banner__item {
         display: inherit;
         justify-content: inherit;
         align-items: inherit;
@@ -385,7 +385,54 @@ nav{
         height: 100%;
         text-align: center;
         overflow: hidden;
-        
+        margin-bottom: 0px;
+        position: relative;
+        .banner__name{
+          position: absolute;
+          bottom: 20;
+          z-index: 2;
+          font-size: var(--size-sm);
+          color: var(--color-secondary-light);
+          transition: bottom 0.4s ease-out, letter-spacing 0.4s ease-out;
+          &::after{
+            content: "";
+            position: absolute;
+            width: 1px;
+            background-color: var(--color-secondary);
+            height: 50px;
+            bottom: -50px;
+            left: 50%;
+          }
+        }
+        .banner__overlay{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: #00000070;
+          z-index: 1;
+          transition: background-color 0.4s ease-out;
+        }
+        picture{
+          img{
+            transition: transform 4s ease-out;
+          }
+        }
+        &:hover{
+          picture{
+            img{
+              transform: scale(1.2);
+            }
+          }
+          .banner__name{
+            bottom: 50px;
+            letter-spacing: 0.2em;
+          }
+          .banner__overlay{
+            background-color: #00000040;
+          }
+        }
       }
     }
 

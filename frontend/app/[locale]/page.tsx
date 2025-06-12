@@ -1,6 +1,7 @@
 import "../styles/home.style.css";
 import { getMessages } from "@/messages/getMessages";
 import { getDataPage } from "../data/home.data";
+import { getAllRoomCategories } from "@/app/data/room.data";
 import PopBtn from "../components/ui/btn/PopBtn";
 import PortableTextCustom from "../components/ui/portableText/PortableTextCustom";
 import CustomImg from "../components/ui/img/CustomImg";
@@ -25,6 +26,8 @@ export default async function HomePage({ params }: HomePageProps) {
 
   const data = await getDataPage(locale);
   const t = getMessages(locale);
+
+  const categories = await getAllRoomCategories();
 
   return (
     <>
@@ -116,52 +119,58 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="column__1">
           <div className="parent">
             <div className="div1">
-              <a>
-                <CustomImg
-                  containerClassName=""
-                  src={data.intro.img.media?.url || ""}
-                  alt="intro imagen referencia"
-                  width={960}
-                  height={720}
-                  category="regular"
-                />
-              </a>
+              {categories.slice(0, 1).map((img, index) => (
+                <a className={`banner__item banner__item__${index}`} href={`./${img.slug.current}`} key={`banner-${index}`}>
+                  <CustomImg
+                    src={img.img.media.url || ""}
+                    alt="Hero background static"
+                    category="xl"
+                  />
+                  <div className="banner__name">{img.string_name}</div>
+                  <div className="banner__overlay"></div>
+                  </a>
+              ))}
             </div>
             <div className="div2">
-              <a>
-                <CustomImg
-                  containerClassName=""
-                  src={data.intro.img.media?.url || ""}
-                  alt="intro imagen referencia"
-                  width={960}
-                  height={720}
-                  category="regular"
-                />
-              </a>
+              {categories.slice(1, 2).map((img, index) => (
+                <a className={`banner__item banner__item__${index}`} href={`./${img.slug.current}`} key={`banner-${index}`}>
+                  <CustomImg
+                    src={img.img.media.url || ""}
+                    alt="Hero background static"
+                    category="xl"
+                  />
+                  <div className="banner__name">{img.string_name}</div>
+                  <div className="banner__overlay"></div>
+                  </a>
+              ))}
             </div>
             <div className="div3">
-              <a>
-                <CustomImg
-                  containerClassName=""
-                  src={data.intro.img.media?.url || ""}
-                  alt="intro imagen referencia"
-                  width={960}
-                  height={720}
-                  category="regular"
-                />
-              </a>
+              
+              {categories.slice(2, 3).map((img, index) => (
+                <a className={`banner__item banner__item__${index}`} href={`./${img.slug.current}`} key={`banner-${index}`}>
+                  <CustomImg
+                    src={img.img.media.url || ""}
+                    alt="Hero background static"
+                    category="xl"
+                  />
+                  <div className="banner__name">{img.string_name}</div>
+                  <div className="banner__overlay"></div>
+                  </a>
+              ))}
+             
             </div>
             <div className="div4">
-              <a>
-                <CustomImg
-                  containerClassName=""
-                  src={data.intro.img.media?.url || ""}
-                  alt="intro imagen referencia"
-                  width={960}
-                  height={720}
-                  category="regular"
-                />
-              </a>
+              {categories.slice(3, 4).map((img, index) => (
+                <a className={`banner__item banner__item__${index}`} href={`./${img.slug.current}`} key={`banner-${index}`}>
+                  <CustomImg
+                    src={img.img.media.url || ""}
+                    alt="Hero background static"
+                    category="xl"
+                  />
+                  <div className="banner__name">{img.string_name}</div>
+                  <div className="banner__overlay"></div>
+                  </a>
+              ))}
             </div>
           </div>
           <GoBtn

@@ -8,68 +8,203 @@ nav{
   }
 }
 
-.hero,
-.content {
-  padding: 5%;
-}
-
 .hero {
-  padding-top: calc(70px + 5%);
+  padding: 150px 10% 70px;
   background-color: var(--color-secondary-light);
-  .column__1 {
-    flex-direction: column;
-    h1, .portableText{
-      width: 100%;
-      text-align: start;
+  .column__2{
+    padding-bottom: 20px;
+    .col__left{
+      h1{
+        color: var(--color-secondary-dark);
+        margin-bottom: 20px;
+      }
+      h2{
+        color: var(--color-primary);
+        line-height: 1.3;
+      }
     }
+  }
+  .column__1 {
     /**Dashboard*/
     .dashboard {
-      background-color: var(--color-white);
-      margin: 0 5%;
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-radius: 5px;
-      .dashboard__item {
-        display: flex;
-        place-content: center;
-        margin: 0;
-        border-right: 1px solid #a5b7c1;
-        select {
-          text-align: center;
-          padding: 5%;
-          width: 100%;
-          height: auto;
-          cursor: pointer;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 10px;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
+    .dashboard__item {
+      display: flex;
+      margin: 0;
+      border-right: 1px solid #594f4530;
+      position: relative;
+      font-size: 17px;
+      &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 20px;
+      }
+      &:nth-child(1){
+        &::before{
+          background-image: url("../../public/filter_location.svg");
         }
-        .btn.btn__search {
-          background-color: var(--color-secondary);
-          text-align: center;
-          justify-content: center;
-          border-radius: 0 5px 5px 0;
-          width: 100%;
-          height: 100%;
-          color: inherit;
-          font-size: inherit;
-          &::after {
-            display: none;
-          }
+      }
+      &:nth-child(2){
+        &::before{
+          background-image: url("../../public/filter_types.svg");
         }
-        .date-picker-button,
-        .date-picker-container {
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          justify-content: center;
-          font-size: inherit;
-          &::after {
-            display: none;
-          }
+      }
+      &:nth-child(3){
+        &::before{
+          background-image: url("../../public/filter_calendar.svg");
+        }
+      }
+      &:last-child{
+        border-right: 0px;
+        &::before{
+          background-image: url("../../public/filter_search.svg");
+        }
+      }
+      select {
+        text-align: left;
+        padding-left: 60px;
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        font-family: var(--font-primary);
+        color: var(--color-primary);
+        font-size: inherit;
+        line-height: 1;
+        outline: none;
+      }
+      .btn.btn__search {
+        background-color: var(--color-secondary);
+        text-align: left;
+        justify-content: flex-start;
+        border-radius: 0 5px 5px 0;
+        padding-left: 60px;
+        font-size: inherit;
+        width: 100%;
+        height: 100%;
+        color: inherit;
+        &::after {
+          display: none;
+        }
+      }
+      .date-picker-container {
+        width: 100%;
+        height: 100%;
+        font-family: var(--font-primary);
+        color: var(--color-primary);
+        font-size: inherit;
+        line-height: 1;
+        justify-content: flex-start;
+        text-align: left;
+        align-items: flex-start;
+      }
+      .date-picker-button {
+        padding: 0 0 0 60px;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        font-family: var(--font-primary);
+        color: var(--color-primary);
+        font-size: inherit;
+        line-height: 1;
+        outline: none;
+        &::after {
+          display: none;
         }
       }
     }
   }
+
+
+  /* *DayPickerComponent */
+  .date-picker-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .date-picker-button {
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 150px;
+    text-align: left;
+    transition: all 0.2s ease;
+  }
+
+  .calendar-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin-top: 8px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.2s ease-out;
+    min-width: 650px;
+  }
+  .rdp-months {
+    flex-wrap: nowrap;
+  }
+  .rdp-button_next,
+  .rdp-button_previous {
+    background-color: var(--color-primary);
+    border-radius: 100%;
+  }
+  .my-day-picker {
+    --rdp-accent-color: var(--color-accent, white);
+    --rdp-background-color: var(--color-secondary, #e6f0ff);
+    font-family: inherit;
+    padding: 8px;
+  }
+
+  .my-selected {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+  }
+
+  .my-range-start,
+  .my-range-end {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 100% !important;
+  }
+
+  .my-range-middle {
+    background-color: var(--color-secondary, rgba(0, 86, 179, 0.2)) !important;
+    color: var(--color-text-dark, #333) !important;
+    border-radius: 0 !important;
+  }
+
+  .range-info {
+    text-align: center;
+    padding: 5px;
+    font-size: 0.9rem;
+    color: var(--color-text-dark, #333);
+    border-top: 1px solid #eee;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  }
 }
 .content{
+  padding: 5% 10%;
   background-color: var(--color-white);
 }

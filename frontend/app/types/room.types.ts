@@ -2,6 +2,8 @@ import { Block, Image, SEO, SLUG } from "./globals.types";
 
 export interface RoomCategory {
   string_name: string;
+  slug: SLUG;
+  img: Image;
 }
 export interface RoomLocation {
   string_name: string;

@@ -21,12 +21,18 @@ const page = async ({ params }: Props) => {
   return (
     <>
       <section className="hero">
+        <div className="column__2">
+          <div className="col__left">
+            <h1>{pageData?.string_h1}</h1>
+            <PortableTextCustom
+              hasImg={false}
+              data={pageData?.block_info || []}
+            />
+          </div>
+          <div className="col__right">
+          </div>
+        </div>
         <div className="column__1">
-          <h1>{pageData?.string_h1}</h1>
-          <PortableTextCustom
-            hasImg={false}
-            data={pageData?.block_info || []}
-          />
           <Dashboard locale={locale} />
         </div>
       </section>

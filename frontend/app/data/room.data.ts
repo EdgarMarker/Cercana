@@ -10,6 +10,12 @@ const TESTY = `
 
 const CATEGORY = `
     string_name,
+    slug{
+        current
+    },
+    img {
+        "media": asset->{url}
+    }
 `;
 
 const LOCATION = `

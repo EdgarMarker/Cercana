@@ -1,5 +1,6 @@
 import { client } from "@/app/lib/sanity/client";
 import { Home } from "../types/home.types";
+import { RoomCategory } from "../types/room.types";
 
 const MODEL_PAGE = `
   language,

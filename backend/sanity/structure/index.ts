@@ -42,6 +42,12 @@ export const structure: StructureResolver = (S) =>
           .filter('_type == "rooms"'),
       ),
 
+      S.listItem().icon(HomeIcon).title('Categorías').child(
+        S.documentTypeList('room-category') // Tipo de documento: pages
+          .title('Categorías')
+          .filter('_type == "room-category"'),
+      ),
+
       S.listItem().icon(FaConciergeBell).title('Amenidades').child(
         S.documentTypeList('amenities') // Tipo de documento: pages
           .title('Amenidades')

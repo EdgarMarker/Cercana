@@ -37,12 +37,12 @@ const SliderAccommodationDetailHero = ({ images }: Props) => {
       <Splide
         hasTrack={false}
         options={{
-          type: "loop",
-          perPage: 1,
-          perMove: 1,
-          gap: "1rem",
+          fixedWidth : '70%',
+          gap: "5%",
           arrows: true,
           pagination: true,
+          padding: '10%',
+          rewind: false,
         }}
       >
         <div className="arrowsContainer">

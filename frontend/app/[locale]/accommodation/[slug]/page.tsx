@@ -9,6 +9,8 @@ import SliderAccommodationDetailRooms from "@/app/components/ui/slider/SliderAcc
 import AccommodationDetailDistanceTab from "@/app/components/ui/tabs/AccommodationDetailDistanceTab";
 import GoBtn from "@/app/components/ui/btn/GoBtn";
 import TestyCard from "@/app/components/ui/cards/TestyCard";
+import DayPickerComponent from "@/app/components/hero/DayPickerComponent";
+import GoogleMapView from "@/app/components/ui/map/GoogleMapView";
 
 interface Props {
   params: Promise<{ slug: string; locale: string }>;
@@ -45,14 +47,14 @@ const page = async ({ params }: Props) => {
   ];
   return (
     <>
-      <section className="hero fadeInOut">
+      <section className="hero">
         <div className="column__1">
           <h1>{data.string_title}</h1>
           <p>{data.general.string_location}</p>
           <SliderAccommodationDetail images={data.page.hero.arr_img} />
         </div>
       </section>
-      <section className="content fadeInOut">
+      <section id="contentDetail" className="content">
         <div className="column__2">
           <div className="col__left">
             <article className="content__intro">
@@ -66,6 +68,7 @@ const page = async ({ params }: Props) => {
               </ul>
               <p>{previewText}</p>
               <PopBtn
+                iconDirection="btn--down"
                 className="btn__primary"
                 showModal={true}
                 whichModal="accommodationTextModal"
@@ -89,11 +92,12 @@ const page = async ({ params }: Props) => {
                           width={50}
                           height={50}
                         />
-                        <p>{amenity.title}</p>
+                        {amenity.title}
                       </li>
                     ))}
                 </ul>
                 <PopBtn
+                  iconDirection="btn--down"
                   className="btn__primary"
                   showModal={true}
                   whichModal="accommodationAmenityModal"
@@ -117,9 +121,17 @@ const page = async ({ params }: Props) => {
                   L.accommodationDetailPage.page.distance.distanceDriving
                 }
               />
-              {/*Google Maps*/}
+              <div className="google__block">
+                <GoogleMapView
+                  lat={data.general.string_latitud}
+                  lng={data.general.string_longitud}
+                  title={data.string_title}
+                  pinIconUrl="/pin.png" // Personaliza tu ícono aquí
+                />
+              </div>
+              
               <GoBtn
-                iconDirection="btn--down"
+                iconDirection="btn--right"
                 className="btn__primary"
                 hasScroll={false}
                 goToUrl={data.general.string_urlLocation}
@@ -129,7 +141,21 @@ const page = async ({ params }: Props) => {
               </GoBtn>
             </article>
           </div>
-          <div className="col__right"></div>
+          <div className="col__right">
+            <div className="cards__checkout follower">
+              <div className="card__price">
+                <ul role="list">
+                  <li className="cp__number">$12,528 mxn</li>
+                  <li className="cp__days">por 1 noche</li>
+                </ul>
+                <DayPickerComponent locale={locale} />
+                <button className="btn btn-reservar">Reservar</button>
+              </div>
+              <div className="card__contact">
+
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section className="testy fadeInOut">

@@ -43,30 +43,40 @@ export default {
     },
     {
       name: 'general',
-      title: 'General',
+      title: 'Datos generales de la propiedad',
       group: 'general',
       type: 'object',
       fields: [
         {
           name: 'arrRef_category',
-          title: 'Tipos de habitación',
+          title: 'Categoría de alojamiento',
           type: 'array',
           of: [{type: 'reference', to: [{type: 'room-category'}]}],
         },
         {
           name: 'ref_location',
-          title: 'Zona de interés',
+          title: 'Ubicación general de la propiedad',
           type: 'reference',
           to: [{type: 'room-location'}],
         },
         {
           name: 'string_location',
-          title: 'Ubicación',
+          title: 'Dirección detallada',
           type: 'string',
         },
         {
+          name: 'string_latitud',
+          title: 'Latitud de la ubicación',
+          type: 'number',
+        },
+        {
+          name: 'string_longitud',
+          title: 'Longitud de la ubicacion',
+          type: 'number',
+        },
+        {
           name: 'string_urlLocation',
-          title: 'URL de ubicación',
+          title: 'URL de la ubicación en Google Maps',
           type: 'string',
         },
         {
@@ -98,14 +108,14 @@ export default {
     },
     {
       name: 'card',
-      title: 'Tarjeta',
+      title: 'Datos de la propiedad en el listado tipo tarjeta',
       group: 'card',
       type: 'object',
       fields: [
         {
           name: 'text_excerpt',
-          title: 'Extracto',
-          type: 'text',
+          title: 'Colonia, ciudad o estado',
+          type: 'string',
         },
         {
           name: 'img_card',
@@ -139,18 +149,18 @@ export default {
     },
     {
       name: 'page',
-      title: 'Página',
+      title: 'Página de detalle de la propiedad',
       group: 'page',
       type: 'object',
       fields: [
         {
           name: 'hero',
-          title: 'Hero',
+          title: 'Imágenes del carrusel en la cabecera de la página',
           type: 'object',
           fields: [
             {
               name: 'arr_img',
-              title: 'Slider de imágenes del Hero',
+              title: 'Carrusel',
               type: 'array',
               of: [{type: 'image'}],
               options: {
@@ -166,7 +176,7 @@ export default {
           fields: [
             {
               name: 'text_dsc',
-              title: 'Descripción',
+              title: 'Descripción general de la propiedad',
               type: 'text',
             },
             {
@@ -224,7 +234,7 @@ export default {
                     },
                     {
                       name: 'string_dsc',
-                      title: 'Descripción de la habitación',
+                      title: 'Cama(s) en la habitación',
                       type: 'string',
                     },
                     {

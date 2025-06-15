@@ -43,6 +43,8 @@ const setRoomFields = (locale: string) => `
             ${LOCATION}
         },
         number_guests,
+        string_latitud,
+        string_longitud,
         string_location,
         string_urlLocation,
         number_guests,

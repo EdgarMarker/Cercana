@@ -35,12 +35,11 @@ const SliderAccommodationDetailRooms = ({ data }: Props) => {
       <Splide
         hasTrack={false}
         options={{
-          type: "loop",
           perPage: 2,
           perMove: 1,
-          gap: "1rem",
+          gap: "5%",
           arrows: true,
-          pagination: true,
+          pagination: false,
         }}
       >
         <div className="arrowsContainer">
@@ -60,7 +59,7 @@ const SliderAccommodationDetailRooms = ({ data }: Props) => {
                   onClick={() => openLightbox(index)}
                   style={{ cursor: "pointer" }}
                 />
-                <h3>{image.string_name}</h3>
+                <h4>{image.string_name}</h4>
                 <p>{image.string_dsc}</p>
               </div>
             </SplideSlide>

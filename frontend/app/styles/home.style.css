@@ -389,7 +389,7 @@ nav{
         position: relative;
         .banner__name{
           position: absolute;
-          bottom: 20;
+          bottom: 20 !important;
           z-index: 2;
           font-size: var(--size-sm);
           color: var(--color-secondary-light);
@@ -426,7 +426,7 @@ nav{
             }
           }
           .banner__name{
-            bottom: 50px;
+            bottom: 50px !important;
             letter-spacing: 0.2em;
           }
           .banner__overlay{

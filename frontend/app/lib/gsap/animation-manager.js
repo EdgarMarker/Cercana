@@ -210,4 +210,19 @@ export const animationManager = {
 
     ScrollTrigger.refresh();
   },
+
+  initHeroHome() {
+
+    let hCard = gsap.getProperty(".cards__checkout", "height");
+
+    gsap.to(".follower", {
+      scrollTrigger: {
+        trigger: "#contentDetail",
+        pin: ".follower",
+        start: "top 0",
+        end: `bottom-=10% ${hCard}px`,
+      }
+    })
+    console.log(hCard);
+  },
 };

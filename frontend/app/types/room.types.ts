@@ -13,6 +13,8 @@ export interface General {
   ref_location: RoomLocation;
   number_guests: number;
   string_location: string;
+  string_latitud: number;
+  string_longitud: number;
   string_urlLocation: string;
   number_rooms: number;
   number_beds: number;

@@ -26,6 +26,9 @@ const AccommodationPageCardList = ({ locale, roomData }: Props) => {
             alt={room.card.img_card.alt?.altText || ""}
             title={room.string_title}
             excerpt={room.card.text_excerpt}
+            guests={room.general.number_guests}
+            rooms={room.general.number_rooms}
+            baths={room.general.number_baths}
           />
         </li>
       ))}

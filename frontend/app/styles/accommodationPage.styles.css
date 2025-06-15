@@ -204,7 +204,15 @@ nav{
 
   }
 }
+
+
 .content{
   padding: 5% 10%;
   background-color: var(--color-white);
+  .card__img{
+    .imgContainer{
+      height: auto;
+      aspect-ratio: 2/1;
+    }
+  }
 }
